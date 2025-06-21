@@ -6,34 +6,22 @@
     android:layout_height="match_parent"
     android:background="#121212">
 
-    <!-- Conteúdo principal -->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="#121212">
 
-        <!-- Toolbar -->
-        <com.google.android.material.appbar.MaterialToolbar
+        <!-- Toolbar Dark -->
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#1F1F1F"
-            android:title="Categorias"
-            android:titleTextColor="#FFFFFF"
-            app:navigationIcon="@drawable/ic_menu" />
-
-        <!-- Campo de busca -->
-        <EditText
-            android:id="@+id/searchEditText"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Buscar..."
-            android:background="@drawable/search_background"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#888888"
-            android:padding="12dp"
-            android:layout_margin="8dp" />
+            android:background="#1F1F1F"
+            android:elevation="4dp"
+            android:title="MediaPlay"
+            android:titleTextColor="#FFFFFF"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -41,17 +29,21 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:padding="8dp"
             android:clipToPadding="false"
-            android:paddingBottom="16dp" />
+            android:scrollbars="vertical" />
     </LinearLayout>
 
-    <!-- Navigation Drawer -->
+    <!-- Navigation Drawer com Dark Theme -->
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
+        android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#1C1C1C"
-        app:itemTextColor="@android:color/white"
-        app:itemIconTint="@android:color/white" />
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu"
+        android:background="#1F1F1F" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

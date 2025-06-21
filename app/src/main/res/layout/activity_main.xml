@@ -6,41 +6,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#121212"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@drawable/bg_gradient_dark"
     tools:context=".MainActivity">
 
+    <!-- Título -->
     <TextView
         android:id="@+id/textview_title_app"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MediaPlay"
         android:textSize="24sp"
-        android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp" />
+        android:layout_marginBottom="32dp" />
 
-    <EditText
-        android:id="@+id/edittext_m3u"
+    <!-- Campo de URL -->
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Insira a URL do arquivo M3U"
-        android:background="#1E1E1E"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#AAAAAA"
-        android:padding="12dp"
-        android:inputType="textUri"
-        android:layout_marginBottom="16dp" />
+        android:gravity="center_vertical">
 
+        <EditText
+            android:id="@+id/edittext_m3u"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_weight="1"
+            android:hint="URL M3U"
+            android:background="@null"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:inputType="textUri" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#555555"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botão Carregar -->
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Carregar Playlist"
-        android:textAllCaps="false"
-        android:backgroundTint="#BB86FC"
-        android:textColor="#000000"
-        android:padding="12dp" />
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_border_dark" />
+
+    <!-- Botão Adicionar Novo -->
+    <Button
+        android:id="@+id/btnClearUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Novo M3U"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_border_dark"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

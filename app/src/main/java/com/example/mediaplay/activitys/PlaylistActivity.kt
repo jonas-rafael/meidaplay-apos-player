@@ -1,21 +1,22 @@
-package com.example.mediaplay
+package com.example.mediaplay.activitys
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import androidx.activity.viewModels
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mediaplay.R
 import com.example.mediaplay.adapter.M3UAdapter
 import com.example.mediaplay.databinding.ActivityPlaylistBinding
-import com.example.mediaplay.holder.PlaylistHolder
 import com.example.mediaplay.viewmodels.PlaylistViewModel
+import com.google.android.material.navigation.NavigationView
 
-class PlaylistActivity : AppCompatActivity() {
+class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityPlaylistBinding
-    private val viewModel: PlaylistViewModel by viewModels()
+    private lateinit var viewModel: PlaylistViewModel
     private lateinit var adapter: M3UAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,60 +24,55 @@ class PlaylistActivity : AppCompatActivity() {
         binding = ActivityPlaylistBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = ViewModelProvider(this)[PlaylistViewModel::class.java]
+
+        setupRecyclerView()
+        setupNavigationDrawer()
+
+        // Observa lista filtrada
+        viewModel.filteredList.observe(this) { list ->
+            adapter.submitList(list)
+        }
+
+        // Observa categorias
+        viewModel.categories.observe(this) { categories ->
+            val menu = binding.navView.menu
+            menu.clear()
+            menu.add("Todas as Categorias")
+            categories.forEach { category ->
+                menu.add(category)
+            }
+        }
+
+        // Inicializa lista completa recebida da LoadingActivity
+        viewModel.setFullList(com.example.mediaplay.holder.PlaylistHolder.playlist)
+    }
+
+    private fun setupRecyclerView() {
+        adapter = M3UAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = M3UAdapter(emptyList())
         binding.recyclerView.adapter = adapter
-
-        // Passa a lista completa para a ViewModel
-        val playlist = PlaylistHolder.playlist
-        viewModel.setFullList(playlist)
-
-        // Observa as atualizações filtradas
-        viewModel.filteredList.observe(this) { items ->
-            adapter.updateList(items)
-        }
-
-        // Faz o Drawer abrir ao clicar no botão Hamburguer
-        binding.toolbar.setNavigationOnClickListener {
-            binding.drawerLayout.openDrawer(binding.navigationView)
-        }
-
-        // Preenche o Drawer com as categorias
-        populateDrawerMenu()
-
-        // Configura o filtro de busca por texto
-        setupSearchFilter()
     }
 
-    private fun populateDrawerMenu() {
-        val categories = PlaylistHolder.playlist.mapNotNull { it.groupTitle }.distinct()
-        val menu = binding.navigationView.menu
-        menu.clear()
+    private fun setupNavigationDrawer() {
+        setSupportActionBar(binding.toolbar)
 
-        // Adiciona opção "Todas"
-        menu.add("Todas").setOnMenuItemClickListener {
-            viewModel.setCategory(null)
-            binding.drawerLayout.closeDrawers()
-            true
-        }
+        val toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            binding.toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-        categories.forEach { category ->
-            menu.add(category).setOnMenuItemClickListener {
-                viewModel.setCategory(category)
-                binding.drawerLayout.closeDrawers()
-                true
-            }
-        }
+        binding.navView.setNavigationItemSelectedListener(this)
     }
 
-    private fun setupSearchFilter() {
-        binding.searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                viewModel.setSearchQuery(s.toString())
-            }
-        })
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        viewModel.setCategory(item.title.toString())
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 }

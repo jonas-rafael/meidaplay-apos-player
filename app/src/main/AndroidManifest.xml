@@ -22,7 +22,7 @@
             android:name=".LoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".PlaylistActivity"
+            android:name=".activitys.PlaylistActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
