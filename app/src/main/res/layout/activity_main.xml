@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#121212"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textview_title_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MediaPlay"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="16dp" />
+
+    <EditText
+        android:id="@+id/edittext_m3u"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Insira a URL do arquivo M3U"
+        android:background="#1E1E1E"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
+        android:padding="12dp"
+        android:inputType="textUri"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Carregar Playlist"
+        android:textAllCaps="false"
+        android:backgroundTint="#BB86FC"
+        android:textColor="#000000"
+        android:padding="12dp" />
+
+</LinearLayout>
