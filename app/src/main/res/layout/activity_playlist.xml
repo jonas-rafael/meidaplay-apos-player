@@ -12,16 +12,15 @@
         android:orientation="vertical"
         android:background="#121212">
 
-        <!-- Toolbar Dark -->
+        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1F1F1F"
-            android:elevation="4dp"
-            android:title="MediaPlay"
-            android:titleTextColor="#FFFFFF"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+            android:background="@color/purple_700"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="MediaPlay"
+            app:titleTextColor="@android:color/white" />
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -31,19 +30,30 @@
             android:layout_weight="1"
             android:padding="8dp"
             android:clipToPadding="false"
-            android:scrollbars="vertical" />
+            android:background="#121212" />
+
+        <!-- Botão "Ver mais" -->
+        <Button
+            android:id="@+id/btnLoadMore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver mais"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/purple_500"
+            android:layout_margin="8dp"
+            android:visibility="gone" />
     </LinearLayout>
 
-    <!-- Navigation Drawer com Dark Theme -->
+    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"
-        android:background="#1F1F1F" />
+        android:background="#1E1E1E"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

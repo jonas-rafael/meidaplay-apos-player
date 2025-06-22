@@ -2,7 +2,7 @@ package com.example.mediaplay.activitys
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mediaplay.R
 import com.example.mediaplay.adapter.M3UAdapter
 import com.example.mediaplay.databinding.ActivityPlaylistBinding
+import com.example.mediaplay.holder.PlaylistHolder
 import com.example.mediaplay.viewmodels.PlaylistViewModel
 import com.google.android.material.navigation.NavigationView
 
@@ -26,26 +27,23 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         viewModel = ViewModelProvider(this)[PlaylistViewModel::class.java]
 
-        setupRecyclerView()
-        setupNavigationDrawer()
+        viewModel.setFullList(PlaylistHolder.playlist)
 
-        // Observa lista filtrada
+        setupRecyclerView()
+        setupDrawer()
+        setupLoadMoreButton()
+
         viewModel.filteredList.observe(this) { list ->
             adapter.submitList(list)
+            binding.btnLoadMore.visibility = if (list.size < PlaylistHolder.playlist.size) View.VISIBLE else View.GONE
         }
 
-        // Observa categorias
         viewModel.categories.observe(this) { categories ->
             val menu = binding.navView.menu
             menu.clear()
             menu.add("Todas as Categorias")
-            categories.forEach { category ->
-                menu.add(category)
-            }
+            categories.forEach { category -> menu.add(category) }
         }
-
-        // Inicializa lista completa recebida da LoadingActivity
-        viewModel.setFullList(com.example.mediaplay.holder.PlaylistHolder.playlist)
     }
 
     private fun setupRecyclerView() {
@@ -54,10 +52,10 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         binding.recyclerView.adapter = adapter
     }
 
-    private fun setupNavigationDrawer() {
+    private fun setupDrawer() {
         setSupportActionBar(binding.toolbar)
 
-        val toggle = ActionBarDrawerToggle(
+        val toggle = androidx.appcompat.app.ActionBarDrawerToggle(
             this,
             binding.drawerLayout,
             binding.toolbar,
@@ -68,6 +66,12 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         toggle.syncState()
 
         binding.navView.setNavigationItemSelectedListener(this)
+    }
+
+    private fun setupLoadMoreButton() {
+        binding.btnLoadMore.setOnClickListener {
+            viewModel.loadMore()
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
