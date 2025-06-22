@@ -1,6 +1,7 @@
 package com.example.mediaplay.activitys
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.example.mediaplay.R
 import com.example.mediaplay.adapter.M3UAdapter
 import com.example.mediaplay.databinding.ActivityPlaylistBinding
 import com.example.mediaplay.holder.PlaylistHolder
+import com.example.mediaplay.retrofit.M3UItem
 import com.example.mediaplay.viewmodels.PlaylistViewModel
 import com.google.android.material.navigation.NavigationView
 
@@ -27,6 +29,7 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[PlaylistViewModel::class.java]
+
         viewModel.setFullList(PlaylistHolder.playlist)
 
         setupRecyclerView()
@@ -36,20 +39,23 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         viewModel.filteredList.observe(this) { list ->
             adapter.submitList(list)
-            binding.btnLoadMore.visibility =
-                if (list.size < PlaylistHolder.playlist.size) View.VISIBLE else View.GONE
+            binding.btnLoadMore.visibility = if (list.size < PlaylistHolder.playlist.size) View.VISIBLE else View.GONE
         }
 
         viewModel.categories.observe(this) { categories ->
             val menu = binding.navView.menu
             menu.clear()
-            menu.add("Todas as Categorias")
-            categories.forEach { category -> menu.add(category) }
+            categories.forEach { category ->
+                menu.add(category)
+            }
         }
     }
 
     private fun setupRecyclerView() {
-        adapter = M3UAdapter()
+        adapter = M3UAdapter(
+            onItemClick = { item -> openPlayer(item) },
+            onItemLongClick = { item -> viewModel.toggleFavorite(item) }
+        )
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
     }
@@ -88,6 +94,13 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 return true
             }
         })
+    }
+
+    private fun openPlayer(item: M3UItem) {
+        val intent = android.content.Intent(this, PlayerActivity::class.java)
+        intent.putExtra("title", item.title)
+        intent.putExtra("url", item.url)
+        startActivity(intent)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -1,6 +1,7 @@
 package com.example.mediaplay.activitys
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mediaplay.databinding.ActivityPlayerBinding
 import com.google.android.exoplayer2.ExoPlayer
@@ -16,21 +17,29 @@ class PlayerActivity : AppCompatActivity() {
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val url = intent.getStringExtra("url") ?: return
-        val title = intent.getStringExtra("title") ?: "Reprodução"
+        val url = intent.getStringExtra("url")
+        if (url.isNullOrEmpty()) {
+            finish()
+            return
+        }
 
-        setTitle(title)
         setupPlayer(url)
+        setupBackButton()
     }
 
     private fun setupPlayer(url: String) {
         player = ExoPlayer.Builder(this).build()
         binding.playerView.player = player
-
         val mediaItem = MediaItem.fromUri(url)
         player.setMediaItem(mediaItem)
         player.prepare()
         player.playWhenReady = true
+    }
+
+    private fun setupBackButton() {
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onStop() {
