@@ -17,21 +17,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_700"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="MediaPlay"
-            app:titleTextColor="@android:color/white" />
+            android:background="#1F1F1F"
+            android:titleTextColor="#FFFFFF"
+            app:title="MediaPlay" />
 
-        <!-- Campo de Busca -->
+        <!-- SearchView -->
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:queryHint="Buscar..."
-            android:background="#1E1E1E"
-            android:iconifiedByDefault="false"
-            app:iconifiedByDefault="false"
-            android:textColorHint="@android:color/darker_gray" />
+            android:background="#1F1F1F"
+            android:layout_margin="8dp" />
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -39,20 +36,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="8dp"
-            android:clipToPadding="false"
-            android:background="#121212" />
+            android:padding="8dp" />
 
-        <!-- Botão "Ver mais" -->
+        <!-- Botão Ver Mais -->
         <Button
             android:id="@+id/btnLoadMore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ver mais"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/purple_500"
-            android:layout_margin="8dp"
-            android:visibility="gone" />
+            android:text="Ver Mais"
+            android:textColor="#FFFFFF"
+            android:background="#333333"
+            android:visibility="gone"
+            android:layout_margin="8dp" />
+
     </LinearLayout>
 
     <!-- Navigation Drawer -->
@@ -63,8 +59,5 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu"
-        android:background="#1E1E1E"
-        app:itemTextColor="@android:color/white"
-        app:itemIconTint="@android:color/white" />
-
+        android:background="#1F1F1F" />
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -27,7 +27,6 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[PlaylistViewModel::class.java]
-
         viewModel.setFullList(PlaylistHolder.playlist)
 
         setupRecyclerView()
@@ -37,7 +36,8 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         viewModel.filteredList.observe(this) { list ->
             adapter.submitList(list)
-            binding.btnLoadMore.visibility = if (list.size < PlaylistHolder.playlist.size) View.VISIBLE else View.GONE
+            binding.btnLoadMore.visibility =
+                if (list.size < PlaylistHolder.playlist.size) View.VISIBLE else View.GONE
         }
 
         viewModel.categories.observe(this) { categories ->

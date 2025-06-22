@@ -2,5 +2,6 @@
     <string name="app_name">mediaplay</string>
     <string name="navigation_drawer_open">Abrir menu</string>
     <string name="navigation_drawer_close">Fechar menu</string>
+    <string name="thumbnail">Thumbnail da Imagem</string>
 
 </resources>

@@ -10,54 +10,68 @@ import kotlinx.coroutines.launch
 
 class PlaylistViewModel : ViewModel() {
 
+    private var allItems: List<M3UItem> = emptyList()
     private val _filteredList = MutableLiveData<List<M3UItem>>()
     val filteredList: LiveData<List<M3UItem>> get() = _filteredList
 
     private val _categories = MutableLiveData<List<String>>()
     val categories: LiveData<List<String>> get() = _categories
 
-    private val _selectedCategory = MutableLiveData<String?>()
-    private val _searchText = MutableLiveData<String?>()
+    private var selectedCategory: String? = null
+    private var currentSearchText: String = ""
 
-    private var allItems: List<M3UItem> = emptyList()
-    private var itemsDisplayed = 50  // Controle do "Ver mais"
+    private var itemsToShow = 50
 
     fun setFullList(fullList: List<M3UItem>) {
         allItems = fullList
-        val uniqueCategories = allItems.mapNotNull { it.groupTitle }.distinct().sorted()
-        _categories.postValue(uniqueCategories)
+        generateCategories()
         filterList()
     }
 
-    fun setCategory(category: String?) {
-        _selectedCategory.value = if (category == "Todas as Categorias") null else category
+    fun setCategory(category: String) {
+        selectedCategory = if (category == "Todas as Categorias") null else category
+        itemsToShow = 50
         filterList()
     }
 
     fun filterByText(text: String) {
-        _searchText.value = if (text.isBlank()) null else text
+        currentSearchText = text
+        itemsToShow = 50
         filterList()
+    }
+
+    fun loadMore() {
+        itemsToShow += 50
+        filterList()
+    }
+
+    private fun generateCategories() {
+        viewModelScope.launch(Dispatchers.Default) {
+            val uniqueCategories = allItems.mapNotNull { it.groupTitle }.distinct().sorted()
+            _categories.postValue(uniqueCategories)
+        }
     }
 
     private fun filterList() {
         viewModelScope.launch(Dispatchers.Default) {
             var filtered = allItems
 
-            _selectedCategory.value?.let { category ->
+            // Filtro por categoria
+            selectedCategory?.let { category ->
                 filtered = filtered.filter { it.groupTitle == category }
             }
 
-            _searchText.value?.let { query ->
-                filtered = filtered.filter { it.title.contains(query, ignoreCase = true) }
+            // Filtro por texto
+            if (currentSearchText.isNotEmpty()) {
+                filtered = filtered.filter {
+                    it.title.contains(currentSearchText, ignoreCase = true)
+                }
             }
 
-            // Limite inicial para performance
-            _filteredList.postValue(filtered.take(itemsDisplayed))
-        }
-    }
+            // Aplicar paginação (Load More)
+            val limitedList = filtered.take(itemsToShow)
 
-    fun loadMore() {
-        itemsDisplayed += 50
-        filterList()
+            _filteredList.postValue(limitedList)
+        }
     }
 }
