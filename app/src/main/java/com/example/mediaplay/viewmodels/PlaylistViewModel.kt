@@ -17,42 +17,47 @@ class PlaylistViewModel : ViewModel() {
     val categories: LiveData<List<String>> get() = _categories
 
     private val _selectedCategory = MutableLiveData<String?>()
+    private val _searchText = MutableLiveData<String?>()
 
     private var allItems: List<M3UItem> = emptyList()
-    private var currentLimit = 500
+    private var itemsDisplayed = 50  // Controle do "Ver mais"
 
     fun setFullList(fullList: List<M3UItem>) {
         allItems = fullList
-        generateCategories()
+        val uniqueCategories = allItems.mapNotNull { it.groupTitle }.distinct().sorted()
+        _categories.postValue(uniqueCategories)
         filterList()
     }
 
     fun setCategory(category: String?) {
         _selectedCategory.value = if (category == "Todas as Categorias") null else category
-        currentLimit = 500
         filterList()
     }
 
-    fun loadMore() {
-        currentLimit += 500
+    fun filterByText(text: String) {
+        _searchText.value = if (text.isBlank()) null else text
         filterList()
     }
 
     private fun filterList() {
         viewModelScope.launch(Dispatchers.Default) {
-            val filtered = if (_selectedCategory.value.isNullOrEmpty()) {
-                allItems.take(currentLimit)
-            } else {
-                allItems.filter { it.groupTitle == _selectedCategory.value }.take(currentLimit)
+            var filtered = allItems
+
+            _selectedCategory.value?.let { category ->
+                filtered = filtered.filter { it.groupTitle == category }
             }
-            _filteredList.postValue(filtered)
+
+            _searchText.value?.let { query ->
+                filtered = filtered.filter { it.title.contains(query, ignoreCase = true) }
+            }
+
+            // Limite inicial para performance
+            _filteredList.postValue(filtered.take(itemsDisplayed))
         }
     }
 
-    private fun generateCategories() {
-        viewModelScope.launch(Dispatchers.Default) {
-            val uniqueCategories = allItems.mapNotNull { it.groupTitle }.distinct().sorted()
-            _categories.postValue(uniqueCategories)
-        }
+    fun loadMore() {
+        itemsDisplayed += 50
+        filterList()
     }
 }

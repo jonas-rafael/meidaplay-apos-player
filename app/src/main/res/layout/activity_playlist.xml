@@ -22,6 +22,17 @@
             app:title="MediaPlay"
             app:titleTextColor="@android:color/white" />
 
+        <!-- Campo de Busca -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Buscar..."
+            android:background="#1E1E1E"
+            android:iconifiedByDefault="false"
+            app:iconifiedByDefault="false"
+            android:textColorHint="@android:color/darker_gray" />
+
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

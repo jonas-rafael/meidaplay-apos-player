@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,7 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         setupRecyclerView()
         setupDrawer()
         setupLoadMoreButton()
+        setupSearchView()
 
         viewModel.filteredList.observe(this) { list ->
             adapter.submitList(list)
@@ -72,6 +74,20 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         binding.btnLoadMore.setOnClickListener {
             viewModel.loadMore()
         }
+    }
+
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.filterByText(query.orEmpty())
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.filterByText(newText.orEmpty())
+                return true
+            }
+        })
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
