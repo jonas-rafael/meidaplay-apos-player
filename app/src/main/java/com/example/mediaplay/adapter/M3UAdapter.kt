@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mediaplay.R
 import com.example.mediaplay.activitys.PlayerActivity
 import com.example.mediaplay.databinding.ItemM3uBinding
 import com.example.mediaplay.retrofit.M3UItem
 
 class M3UAdapter(
     private val onItemClick: (M3UItem) -> Unit,
-    private val onItemLongClick: (M3UItem) -> Unit
+    private val onFavoriteClick: (M3UItem) -> Unit
 ) : ListAdapter<M3UItem, M3UAdapter.M3UViewHolder>(DiffCallback()) {
 
     inner class M3UViewHolder(private val binding: ItemM3uBinding) :
@@ -24,14 +25,22 @@ class M3UAdapter(
             binding.textViewCategory.text = item.groupTitle ?: ""
 
             Glide.with(binding.imageThumbnail.context)
-                .load(item.imageUrl ?: com.example.mediaplay.R.drawable.placeholder)
-                .placeholder(com.example.mediaplay.R.drawable.placeholder)
+                .load(item.imageUrl ?: R.drawable.placeholder)
+                .placeholder(R.drawable.placeholder)
                 .into(binding.imageThumbnail)
 
-            binding.root.setOnClickListener { onItemClick(item) }
+            // Ícone de favorito
+            val iconRes = if (item.isFavorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border
+            binding.imageFavorite.setImageResource(iconRes)
 
+            // Clique para abrir o Player
+            binding.root.setOnClickListener {
+                onItemClick(item)
+            }
+
+            // Clique no coração para favoritar
             binding.imageFavorite.setOnClickListener {
-                onItemLongClick(item)
+                onFavoriteClick(item)
             }
         }
     }

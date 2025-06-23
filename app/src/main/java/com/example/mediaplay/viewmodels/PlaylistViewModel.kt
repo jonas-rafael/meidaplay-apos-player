@@ -18,10 +18,11 @@ class PlaylistViewModel : ViewModel() {
     private val _categories = MutableLiveData<List<String>>()
     val categories: LiveData<List<String>> get() = _categories
 
-    private val _selectedCategory = MutableLiveData<String?>()
     private var allItems: List<M3UItem> = emptyList()
-    private var itemsPerPage = 50
-    private var currentPage = 1
+    private var currentFilter: String? = null
+    private var searchText: String = ""
+    private var showFavorites: Boolean = false
+    private var currentVisibleCount = 20  // Para o botão "Ver mais"
 
     fun loadM3U(url: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -33,56 +34,34 @@ class PlaylistViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     val body = response.body?.string() ?: ""
                     allItems = com.example.mediaplay.utils.M3UParser.parse(body)
-
-                    generateCategories()
+                    updateCategories()
                     filterList()
                 }
-            } catch (e: Exception) {
-                // Log de erro, se quiser
-            }
+            } catch (_: Exception) { }
         }
     }
 
-    fun setFullList(fullList: List<M3UItem>) {
-        allItems = fullList
-        generateCategories()
+    fun setFullList(list: List<M3UItem>) {
+        allItems = list
+        updateCategories()
         filterList()
     }
 
-    fun setCategory(category: String?) {
-        _selectedCategory.value = category
-        currentPage = 1
+    private fun updateCategories() {
+        val uniqueCategories = allItems.mapNotNull { it.groupTitle }.distinct().sorted()
+        _categories.postValue(uniqueCategories)
+    }
+
+    fun setCategory(category: String) {
+        currentFilter = if (category == "Todas as Categorias") null else category
+        currentVisibleCount = 20
         filterList()
     }
 
-    fun filterByText(query: String) {
-        val textFilter = query.trim().lowercase()
-        _filteredList.postValue(
-            allItems.filter { item ->
-                val matchesCategory = when (_selectedCategory.value) {
-                    "Todas as Categorias", null -> true
-                    "Favoritos" -> item.isFavorite
-                    else -> item.groupTitle == _selectedCategory.value
-                }
-                matchesCategory && item.title.lowercase().contains(textFilter)
-            }.take(currentPage * itemsPerPage)
-        )
-    }
-
-    fun loadMore() {
-        currentPage++
+    fun filterByText(text: String) {
+        searchText = text
+        currentVisibleCount = 20
         filterList()
-    }
-
-    private fun filterList() {
-        val category = _selectedCategory.value
-        val filtered = when (category) {
-            "Todas as Categorias", null -> allItems
-            "Favoritos" -> allItems.filter { it.isFavorite }
-            else -> allItems.filter { it.groupTitle == category }
-        }
-
-        _filteredList.postValue(filtered.take(currentPage * itemsPerPage))
     }
 
     fun toggleFavorite(item: M3UItem) {
@@ -92,10 +71,41 @@ class PlaylistViewModel : ViewModel() {
         filterList()
     }
 
-    private fun generateCategories() {
-        val uniqueCategories = allItems.mapNotNull { it.groupTitle }.distinct().sorted().toMutableList()
-        uniqueCategories.add(0, "Favoritos")
-        uniqueCategories.add(0, "Todas as Categorias")
-        _categories.postValue(uniqueCategories)
+    fun showFavoritesOnly() {
+        showFavorites = !showFavorites
+        currentVisibleCount = 20
+        filterList()
+    }
+
+    fun loadMore() {
+        currentVisibleCount += 20
+        filterList()
+    }
+
+    fun getTotalCount(): Int {
+        return allItems.size
+    }
+
+    private fun filterList() {
+        var result = allItems
+
+        if (currentFilter != null) {
+            result = result.filter { it.groupTitle == currentFilter }
+        }
+
+        if (searchText.isNotBlank()) {
+            result = result.filter { it.title.contains(searchText, ignoreCase = true) }
+        }
+
+        if (showFavorites) {
+            result = result.filter { it.isFavorite }
+        }
+
+        // Paginação (limita a quantidade inicial de itens)
+        val limitedResult = if (result.size > currentVisibleCount) {
+            result.take(currentVisibleCount)
+        } else result
+
+        _filteredList.postValue(limitedResult)
     }
 }

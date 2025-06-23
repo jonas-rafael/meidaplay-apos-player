@@ -1,11 +1,10 @@
 package com.example.mediaplay.activitys
 
 import android.os.Bundle
-import android.view.Menu
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,6 @@ import com.example.mediaplay.R
 import com.example.mediaplay.adapter.M3UAdapter
 import com.example.mediaplay.databinding.ActivityPlaylistBinding
 import com.example.mediaplay.holder.PlaylistHolder
-import com.example.mediaplay.retrofit.M3UItem
 import com.example.mediaplay.viewmodels.PlaylistViewModel
 import com.google.android.material.navigation.NavigationView
 
@@ -29,32 +27,32 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[PlaylistViewModel::class.java]
-
         viewModel.setFullList(PlaylistHolder.playlist)
 
         setupRecyclerView()
         setupDrawer()
         setupLoadMoreButton()
-        setupSearchView()
+        setupSearch()
 
         viewModel.filteredList.observe(this) { list ->
+            Log.d("M3U_DEBUG", "Exibindo ${list.size} de ${viewModel.getTotalCount()} itens")
             adapter.submitList(list)
-            binding.btnLoadMore.visibility = if (list.size < PlaylistHolder.playlist.size) View.VISIBLE else View.GONE
+            binding.btnLoadMore.visibility =
+                if (list.size < viewModel.getTotalCount()) View.VISIBLE else View.GONE
         }
 
         viewModel.categories.observe(this) { categories ->
             val menu = binding.navView.menu
             menu.clear()
-            categories.forEach { category ->
-                menu.add(category)
-            }
+            menu.add("Todas as Categorias")
+            categories.forEach { category -> menu.add(category) }
         }
     }
 
     private fun setupRecyclerView() {
         adapter = M3UAdapter(
             onItemClick = { item -> openPlayer(item) },
-            onItemLongClick = { item -> viewModel.toggleFavorite(item) }
+            onFavoriteClick = { item -> viewModel.toggleFavorite(item) }
         )
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter
@@ -82,11 +80,10 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         }
     }
 
-    private fun setupSearchView() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+    private fun setupSearch() {
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.filterByText(query.orEmpty())
-                return true
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -96,7 +93,7 @@ class PlaylistActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         })
     }
 
-    private fun openPlayer(item: M3UItem) {
+    private fun openPlayer(item: com.example.mediaplay.retrofit.M3UItem) {
         val intent = android.content.Intent(this, PlayerActivity::class.java)
         intent.putExtra("title", item.title)
         intent.putExtra("url", item.url)
