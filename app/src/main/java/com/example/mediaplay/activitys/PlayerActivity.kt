@@ -1,11 +1,13 @@
 package com.example.mediaplay.activitys
 
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mediaplay.databinding.ActivityPlayerBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.PlaybackException
+import com.google.android.exoplayer2.Player
 
 class PlayerActivity : AppCompatActivity() {
 
@@ -19,6 +21,7 @@ class PlayerActivity : AppCompatActivity() {
 
         val url = intent.getStringExtra("url")
         if (url.isNullOrEmpty()) {
+            Toast.makeText(this, "URL inválida ou ausente", Toast.LENGTH_LONG).show()
             finish()
             return
         }
@@ -34,6 +37,13 @@ class PlayerActivity : AppCompatActivity() {
         player.setMediaItem(mediaItem)
         player.prepare()
         player.playWhenReady = true
+
+        player.addListener(object : Player.Listener {
+            override fun onPlayerError(error: PlaybackException) {
+                Toast.makeText(this@PlayerActivity, "Erro ao carregar o vídeo", Toast.LENGTH_LONG).show()
+                finish()
+            }
+        })
     }
 
     private fun setupBackButton() {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permissão de Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,32 +15,28 @@
         android:theme="@style/Theme.Mediaplay"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".activitys.GroupsActivity"
+            android:exported="false" />
         <!-- PlayerActivity -->
         <activity
             android:name=".activitys.PlayerActivity"
-            android:exported="false" />
-
-        <!-- LoadingActivity -->
+            android:exported="false" /> <!-- LoadingActivity -->
         <activity
             android:name=".LoadingActivity"
-            android:exported="false" />
-
-        <!-- PlaylistActivity -->
+            android:exported="false" /> <!-- PlaylistActivity -->
         <activity
             android:name=".activitys.PlaylistActivity"
-            android:exported="false" />
-
-        <!-- MainActivity -->
+            android:exported="false" /> <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
