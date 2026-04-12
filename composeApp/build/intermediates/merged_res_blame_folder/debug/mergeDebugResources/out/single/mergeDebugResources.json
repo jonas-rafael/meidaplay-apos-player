@@ -1,0 +1,146 @@
+[
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_fragment_group.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/fragment_group.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/xml_backup_rules.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_activity_loading.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/activity_loading.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_bg_gradient_dark.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/bg_gradient_dark.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_placeholder.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/placeholder.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_item_m3u.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/item_m3u.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/menu_drawer_menu.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/menu/drawer_menu.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_ic_menu.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/ic_menu.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_button_border_dark.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/button_border_dark.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_ic_favorite_border.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/ic_favorite_border.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_bg_thumbnail_border.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/bg_thumbnail_border.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_activity_playlist.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/activity_playlist.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_activity_main.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_item_media.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/item_media.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_item_background.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/item_background.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_ic_favorite.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/ic_favorite.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/ic_arrow_back.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_image_background.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/image_background.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/drawable_search_background.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/drawable/search_background.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_activity_player.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/activity_player.xml"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.mediaplay.composeApp-debug-64:/layout_nav_header.xml.flat",
+        "source": "com.example.mediaplay.composeApp-androidMain-66:/layout/nav_header.xml"
+    }
+]

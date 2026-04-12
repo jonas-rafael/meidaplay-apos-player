@@ -1,0 +1,4 @@
+com.example.mediaplay.test.composeApp-androidTest-0 /home/jonas/iptv/meidaplay-apos-player/composeApp/build/generated/res/resValues/androidTest/debug
+com.example.mediaplay.test.composeApp-mergeDebugAndroidTestResources-1 /home/jonas/iptv/meidaplay-apos-player/composeApp/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.mediaplay.test.composeApp-mergeDebugAndroidTestResources-2 /home/jonas/iptv/meidaplay-apos-player/composeApp/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.mediaplay.test.composeApp-debugAndroidTest-3 /home/jonas/iptv/meidaplay-apos-player/composeApp/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
