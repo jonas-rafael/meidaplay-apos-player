@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.mediaplay.composeApp-mergeDebugResources-62:/values-v26/values-v26.xml",
+            "outputFile": "com.example.mediaplay.composeApp-mergeDebugResources-64:/values-v26/values-v26.xml",
             "map": [
                 {
-                    "source": "/home/jonas/.gradle/caches/8.11.1/transforms/1047a6ef319e997d1009c8b250405fe7/transformed/appcompat-1.7.1/res/values-v26/values-v26.xml",
+                    "source": "/home/jonas/.gradle/caches/8.11.1/transforms/3df1762fa1b302765d2959209b9d917d/transformed/appcompat-1.7.1/res/values-v26/values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

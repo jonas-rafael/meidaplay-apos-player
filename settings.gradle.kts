@@ -9,7 +9,6 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-        // Adicionando repositório para o plugin do Compose Multiplatform
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
@@ -19,7 +18,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        // Repositório do Compose Multiplatform se necessário
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }

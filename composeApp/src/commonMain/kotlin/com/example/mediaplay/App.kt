@@ -29,6 +29,7 @@ import coil3.compose.AsyncImage
 import com.example.mediaplay.models.MediaItem
 import com.example.mediaplay.viewmodels.PlaylistViewModel
 import com.example.mediaplay.viewmodels.PlayerAspectRatio
+import com.example.mediaplay.ui.AdBanner
 import com.example.mediaplay.ui.player.VideoPlayer
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -329,6 +330,9 @@ fun Sidebar(
                 )
             }
         }
+
+        // Banner de Anúncio fixo no rodapé da Sidebar
+        AdBanner(modifier = Modifier.padding(top = 8.dp))
     }
 }
 

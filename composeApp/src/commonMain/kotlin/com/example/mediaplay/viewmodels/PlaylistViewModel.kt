@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mediaplay.database.*
 import com.example.mediaplay.models.MediaItem
 import com.example.mediaplay.utils.M3UStreamParser
+import com.example.mediaplay.ui.showInterstitialAd
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
@@ -25,7 +26,7 @@ data class PlaylistUiState(
     val favorites: List<String> = emptyList(),
     val isLoading: Boolean = false,
     val loadProgress: Float? = null,
-    val selectedType: String = "LIVE", // "LIVE", "MOVIE", "SERIES"
+    val selectedType: String = "LIVE",
     val selectedCategory: String = "Todas",
     val selectedItem: MediaItem? = null,
     val selectedPlaylist: PlaylistItem? = null,
@@ -46,6 +47,13 @@ class PlaylistViewModel : ViewModel() {
     private val playlistDao = database.playlistDao()
     private val mediaItemDao = database.mediaItemDao()
 
+    // Controle de Anúncios
+    private var lastAdTimestamp = 0L
+    private var channelSwitchCount = 0
+    private var isFirstSelection = true
+    private val AD_COOLDOWN_MS = 180_000 // 3 minutos
+    private val AD_SWITCH_THRESHOLD = 3 // 3 cliques
+
     init {
         viewModelScope.launch {
             playlistDao.getAll().collect { lists ->
@@ -62,7 +70,6 @@ class PlaylistViewModel : ViewModel() {
             }
         }
 
-        // Observar Canais filtrados do Banco por TIPO e CATEGORIA
         viewModelScope.launch {
             _uiState.flatMapLatest { state ->
                 if (state.selectedPlaylist == null) flowOf(emptyList())
@@ -80,7 +87,6 @@ class PlaylistViewModel : ViewModel() {
             }
         }
 
-        // Observar Categorias dinâmicas baseadas no TIPO selecionado
         viewModelScope.launch {
             _uiState.flatMapLatest { state ->
                 if (state.selectedPlaylist == null) flowOf(emptyList())
@@ -172,8 +178,30 @@ class PlaylistViewModel : ViewModel() {
         }
     }
 
-    fun selectItem(item: MediaItem) { _uiState.update { it.copy(selectedItem = item) } }
+    fun selectItem(item: MediaItem) { 
+        _uiState.update { it.copy(selectedItem = item) }
+        
+        val currentTime = com.example.mediaplay.utils.getCurrentTimeMillis()
+        
+        // Regra Especial: Mostrar anúncio no primeiro clique de todos
+        if (isFirstSelection) {
+            showInterstitialAd()
+            isFirstSelection = false
+            lastAdTimestamp = currentTime
+            channelSwitchCount = 0
+        } else {
+            // Lógica normal de Cooldown
+            channelSwitchCount++
+            if (channelSwitchCount >= AD_SWITCH_THRESHOLD && (currentTime - lastAdTimestamp) >= AD_COOLDOWN_MS) {
+                showInterstitialAd()
+                lastAdTimestamp = currentTime
+                channelSwitchCount = 0
+            }
+        }
+    }
+
     fun setFullscreen(en: Boolean) { _uiState.update { it.copy(isFullscreen = en) } }
+    
     fun toggleAspectRatio() {
         _uiState.update { state ->
             val next = when (state.aspectRatio) {
@@ -188,8 +216,25 @@ class PlaylistViewModel : ViewModel() {
     fun setCategory(cat: String) { _uiState.update { it.copy(selectedCategory = cat, visibleCount = 100) } }
     fun filterByText(txt: String) { _uiState.update { it.copy(searchText = txt, visibleCount = 100) } }
     fun loadMore() { _uiState.update { it.copy(visibleCount = it.visibleCount + 100) } }
-    fun nextChannel() { /* Lógica de pular canal */ }
-    fun previousChannel() { /* Lógica de pular canal */ }
+    fun nextChannel() {
+        val currentList = _uiState.value.filteredItems
+        val currentItem = _uiState.value.selectedItem
+        if (currentList.isNotEmpty() && currentItem != null) {
+            val currentIndex = currentList.indexOfFirst { it.url == currentItem.url }
+            val nextIndex = if (currentIndex == -1 || currentIndex == currentList.size - 1) 0 else currentIndex + 1
+            selectItem(currentList[nextIndex])
+        }
+    }
+
+    fun previousChannel() {
+        val currentList = _uiState.value.filteredItems
+        val currentItem = _uiState.value.selectedItem
+        if (currentList.isNotEmpty() && currentItem != null) {
+            val currentIndex = currentList.indexOfFirst { it.url == currentItem.url }
+            val prevIndex = if (currentIndex <= 0) currentList.size - 1 else currentIndex - 1
+            selectItem(currentList[prevIndex])
+        }
+    }
     fun toggleFavorite(item: MediaItem) {
         viewModelScope.launch {
             val isFav = _uiState.value.favorites.contains(item.url)
