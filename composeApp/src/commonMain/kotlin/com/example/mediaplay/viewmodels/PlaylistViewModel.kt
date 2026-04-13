@@ -6,6 +6,7 @@ import com.example.mediaplay.database.*
 import com.example.mediaplay.models.MediaItem
 import com.example.mediaplay.utils.M3UStreamParser
 import com.example.mediaplay.ui.showInterstitialAd
+import com.example.mediaplay.utils.getCurrentTimeMillis
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
@@ -47,12 +48,11 @@ class PlaylistViewModel : ViewModel() {
     private val playlistDao = database.playlistDao()
     private val mediaItemDao = database.mediaItemDao()
 
-    // Controle de Anúncios
     private var lastAdTimestamp = 0L
     private var channelSwitchCount = 0
     private var isFirstSelection = true
-    private val AD_COOLDOWN_MS = 180_000 // 3 minutos
-    private val AD_SWITCH_THRESHOLD = 3 // 3 cliques
+    private val AD_COOLDOWN_MS = 180_000 
+    private val AD_SWITCH_THRESHOLD = 3 
 
     init {
         viewModelScope.launch {
@@ -81,9 +81,11 @@ class PlaylistViewModel : ViewModel() {
                     state.visibleCount
                 )
             }.collect { entities ->
-                _uiState.update { it.copy(filteredItems = entities.map { e -> 
-                    MediaItem(e.title, e.url, e.imageUrl, e.groupTitle, e.tvgId, e.tvgName, false, e.contentType)
-                }) }
+                _uiState.update { state ->
+                    state.copy(filteredItems = entities.map { e -> 
+                        MediaItem(e.title, e.url, e.imageUrl, e.groupTitle, e.tvgId, e.tvgName, false, e.contentType)
+                    })
+                }
             }
         }
 
@@ -162,11 +164,15 @@ class PlaylistViewModel : ViewModel() {
                                     playlistId = playlist.id, contentType = item.contentType
                                 ))
                                 if (batch.size >= 500) {
-                                    runBlocking { mediaItemDao.insertAll(batch.toList()) }
+                                    val currentBatch = batch.toList()
+                                    runBlocking { mediaItemDao.insertAll(currentBatch) }
                                     batch.clear()
                                 }
                             }
-                            if (batch.isNotEmpty()) mediaItemDao.insertAll(batch)
+                            if (batch.isNotEmpty()) {
+                                val finalBatch = batch.toList()
+                                runBlocking { mediaItemDao.insertAll(finalBatch) }
+                            }
                         }
                     }
                 }
@@ -181,16 +187,14 @@ class PlaylistViewModel : ViewModel() {
     fun selectItem(item: MediaItem) { 
         _uiState.update { it.copy(selectedItem = item) }
         
-        val currentTime = com.example.mediaplay.utils.getCurrentTimeMillis()
+        val currentTime = getCurrentTimeMillis()
         
-        // Regra Especial: Mostrar anúncio no primeiro clique de todos
         if (isFirstSelection) {
             showInterstitialAd()
             isFirstSelection = false
             lastAdTimestamp = currentTime
             channelSwitchCount = 0
         } else {
-            // Lógica normal de Cooldown
             channelSwitchCount++
             if (channelSwitchCount >= AD_SWITCH_THRESHOLD && (currentTime - lastAdTimestamp) >= AD_COOLDOWN_MS) {
                 showInterstitialAd()
@@ -213,9 +217,11 @@ class PlaylistViewModel : ViewModel() {
             state.copy(aspectRatio = next)
         }
     }
+
     fun setCategory(cat: String) { _uiState.update { it.copy(selectedCategory = cat, visibleCount = 100) } }
     fun filterByText(txt: String) { _uiState.update { it.copy(searchText = txt, visibleCount = 100) } }
     fun loadMore() { _uiState.update { it.copy(visibleCount = it.visibleCount + 100) } }
+    
     fun nextChannel() {
         val currentList = _uiState.value.filteredItems
         val currentItem = _uiState.value.selectedItem
@@ -235,6 +241,7 @@ class PlaylistViewModel : ViewModel() {
             selectItem(currentList[prevIndex])
         }
     }
+
     fun toggleFavorite(item: MediaItem) {
         viewModelScope.launch {
             val isFav = _uiState.value.favorites.contains(item.url)
