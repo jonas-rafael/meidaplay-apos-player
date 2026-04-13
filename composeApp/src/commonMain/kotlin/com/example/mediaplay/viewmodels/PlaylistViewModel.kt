@@ -40,7 +40,7 @@ data class PlaylistUiState(
 
 class PlaylistViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(PlaylistUiState())
-    val uiState = _uiState.asStateFlow()
+    val uiState: StateFlow<PlaylistUiState> = _uiState.asStateFlow()
 
     private val httpClient = HttpClient()
     private val database = getDatabaseBuilder().build()
@@ -57,7 +57,7 @@ class PlaylistViewModel : ViewModel() {
     init {
         viewModelScope.launch {
             playlistDao.getAll().collect { lists ->
-                _uiState.update { it.copy(playlists = lists) }
+                _uiState.update { state -> state.copy(playlists = lists) }
                 if (_uiState.value.selectedPlaylist == null && lists.isNotEmpty()) {
                     selectPlaylist(lists.first())
                 }
@@ -66,7 +66,7 @@ class PlaylistViewModel : ViewModel() {
 
         viewModelScope.launch {
             favoriteDao.getAll().collect { favs ->
-                _uiState.update { it.copy(favorites = favs.map { f -> f.url }) }
+                _uiState.update { state -> state.copy(favorites = favs.map { f -> f.url }) }
             }
         }
 
@@ -95,13 +95,13 @@ class PlaylistViewModel : ViewModel() {
                 else mediaItemDao.getCategories(state.selectedPlaylist.id, state.selectedType)
             }.collect { cats ->
                 val list = listOf("Todas") + cats.filterNotNull().distinct().sorted()
-                _uiState.update { it.copy(categories = list) }
+                _uiState.update { state -> state.copy(categories = list) }
             }
         }
     }
 
     fun setType(type: String) {
-        _uiState.update { it.copy(selectedType = type, selectedCategory = "Todas", visibleCount = 100) }
+        _uiState.update { state -> state.copy(selectedType = type, selectedCategory = "Todas", visibleCount = 100) }
     }
 
     fun addPlaylist(name: String, url: String) {
@@ -130,19 +130,19 @@ class PlaylistViewModel : ViewModel() {
     }
 
     fun selectPlaylist(playlist: PlaylistItem) {
-        _uiState.update { it.copy(selectedPlaylist = playlist, selectedCategory = "Todas", visibleCount = 100) }
+        _uiState.update { state -> state.copy(selectedPlaylist = playlist, selectedCategory = "Todas", visibleCount = 100) }
         loadM3U(playlist)
     }
 
     private fun loadM3U(playlist: PlaylistItem) {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true, loadProgress = 0f) }
+            _uiState.update { state -> state.copy(isLoading = true, loadProgress = 0f) }
             try {
                 withContext(Dispatchers.Default) {
                     httpClient.prepareGet(playlist.url) {
                         onDownload { bytes, total ->
                             if (total != null && total > 0) {
-                                _uiState.update { it.copy(loadProgress = bytes.toFloat() / total) }
+                                _uiState.update { state -> state.copy(loadProgress = bytes.toFloat() / total) }
                             }
                         }
                     }.execute { response ->
@@ -177,15 +177,15 @@ class PlaylistViewModel : ViewModel() {
                     }
                 }
             } catch (e: Exception) {
-                _uiState.update { it.copy(errorMessage = "Erro ao carregar: ${e.message}") }
+                _uiState.update { state -> state.copy(errorMessage = "Erro ao carregar: ${e.message}") }
             } finally {
-                _uiState.update { it.copy(isLoading = false, loadProgress = null) }
+                _uiState.update { state -> state.copy(isLoading = false, loadProgress = null) }
             }
         }
     }
 
     fun selectItem(item: MediaItem) { 
-        _uiState.update { it.copy(selectedItem = item) }
+        _uiState.update { state -> state.copy(selectedItem = item) }
         
         val currentTime = getCurrentTimeMillis()
         
@@ -204,7 +204,7 @@ class PlaylistViewModel : ViewModel() {
         }
     }
 
-    fun setFullscreen(en: Boolean) { _uiState.update { it.copy(isFullscreen = en) } }
+    fun setFullscreen(en: Boolean) { _uiState.update { state -> state.copy(isFullscreen = en) } }
     
     fun toggleAspectRatio() {
         _uiState.update { state ->
@@ -218,9 +218,9 @@ class PlaylistViewModel : ViewModel() {
         }
     }
 
-    fun setCategory(cat: String) { _uiState.update { it.copy(selectedCategory = cat, visibleCount = 100) } }
-    fun filterByText(txt: String) { _uiState.update { it.copy(searchText = txt, visibleCount = 100) } }
-    fun loadMore() { _uiState.update { it.copy(visibleCount = it.visibleCount + 100) } }
+    fun setCategory(cat: String) { _uiState.update { state -> state.copy(selectedCategory = cat, visibleCount = 100) } }
+    fun filterByText(txt: String) { _uiState.update { state -> state.copy(searchText = txt, visibleCount = 100) } }
+    fun loadMore() { _uiState.update { state -> state.copy(visibleCount = state.visibleCount + 100) } }
     
     fun nextChannel() {
         val currentList = _uiState.value.filteredItems
