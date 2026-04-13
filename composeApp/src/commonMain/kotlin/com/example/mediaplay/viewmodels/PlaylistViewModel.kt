@@ -58,7 +58,8 @@ class PlaylistViewModel : ViewModel() {
         viewModelScope.launch {
             playlistDao.getAll().collect { lists ->
                 _uiState.update { state -> state.copy(playlists = lists) }
-                if (_uiState.value.selectedPlaylist == null && lists.isNotEmpty()) {
+                val currentState = _uiState.value
+                if (currentState.selectedPlaylist == null && lists.isNotEmpty()) {
                     selectPlaylist(lists.first())
                 }
             }
@@ -66,15 +67,17 @@ class PlaylistViewModel : ViewModel() {
 
         viewModelScope.launch {
             favoriteDao.getAll().collect { favs ->
-                _uiState.update { state -> state.copy(favorites = favs.map { f -> f.url }) }
+                val favUrls = favs.map { it.url }
+                _uiState.update { state -> state.copy(favorites = favUrls) }
             }
         }
 
         viewModelScope.launch {
             _uiState.flatMapLatest { state ->
-                if (state.selectedPlaylist == null) flowOf(emptyList())
+                val playlist = state.selectedPlaylist
+                if (playlist == null) flowOf(emptyList<MediaItemEntity>())
                 else mediaItemDao.getFiltered(
-                    state.selectedPlaylist.id,
+                    playlist.id,
                     state.selectedType,
                     state.selectedCategory,
                     state.searchText,
@@ -82,17 +85,19 @@ class PlaylistViewModel : ViewModel() {
                 )
             }.collect { entities ->
                 _uiState.update { state ->
-                    state.copy(filteredItems = entities.map { e -> 
+                    val items = entities.map { e -> 
                         MediaItem(e.title, e.url, e.imageUrl, e.groupTitle, e.tvgId, e.tvgName, false, e.contentType)
-                    })
+                    }
+                    state.copy(filteredItems = items)
                 }
             }
         }
 
         viewModelScope.launch {
             _uiState.flatMapLatest { state ->
-                if (state.selectedPlaylist == null) flowOf(emptyList())
-                else mediaItemDao.getCategories(state.selectedPlaylist.id, state.selectedType)
+                val playlist = state.selectedPlaylist
+                if (playlist == null) flowOf(emptyList<String?>())
+                else mediaItemDao.getCategories(playlist.id, state.selectedType)
             }.collect { cats ->
                 val list = listOf("Todas") + cats.filterNotNull().distinct().sorted()
                 _uiState.update { state -> state.copy(categories = list) }
@@ -213,6 +218,7 @@ class PlaylistViewModel : ViewModel() {
                 PlayerAspectRatio.FILL -> PlayerAspectRatio.SIXTEEN_NINE
                 PlayerAspectRatio.SIXTEEN_NINE -> PlayerAspectRatio.FOUR_THREE
                 PlayerAspectRatio.FOUR_THREE -> PlayerAspectRatio.FIT
+                else -> PlayerAspectRatio.FIT
             }
             state.copy(aspectRatio = next)
         }
