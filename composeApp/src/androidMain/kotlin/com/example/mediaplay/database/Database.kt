@@ -15,9 +15,6 @@ fun initDatabaseContext(context: Context) {
     applicationContext = context
 }
 
-@Suppress("NO_ACTUAL_FOR_EXPECT")
-actual object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase>
-
 actual fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
     val dbFile = applicationContext.getDatabasePath("mediaplay.db")
     return Room.databaseBuilder<AppDatabase>(

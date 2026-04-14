@@ -94,6 +94,7 @@ abstract class AppDatabase : RoomDatabase() {
 }
 
 // Interface necessária para o Room KMP instanciar o banco no iOS/Desktop
+@Suppress("NO_ACTUAL_FOR_EXPECT")
 expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase>
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>
