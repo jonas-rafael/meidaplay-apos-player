@@ -15,7 +15,8 @@ workflows:
       events:
         - push
       branch_patterns:
-        - master
+        - pattern: master
+          include: true
     scripts:
       - name: Set up JDK 21
         script: |
