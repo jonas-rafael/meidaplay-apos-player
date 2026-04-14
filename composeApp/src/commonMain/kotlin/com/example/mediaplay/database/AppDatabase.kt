@@ -84,7 +84,6 @@ interface MediaItemDao {
     fun getCategories(playlistId: Int, type: String): Flow<List<String>>
 }
 
-// CORREÇÃO SÊNIOR: Adicionado @ConstructedBy e expect object para compatibilidade com iOS/Native
 @Database(entities = [FavoriteItem::class, PlaylistItem::class, MediaItemEntity::class], version = 5)
 @ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -93,8 +92,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun mediaItemDao(): MediaItemDao
 }
 
-// Interface necessária para o Room KMP instanciar o banco no iOS/Desktop
-@Suppress("NO_ACTUAL_FOR_EXPECT")
-expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase>
+// CORREÇÃO: Removemos a interface daqui para evitar erro de inicialização no metadado
+expect object AppDatabaseConstructor
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>
