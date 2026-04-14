@@ -12,7 +12,6 @@ plugins {
     id("androidx.room")
 }
 
-// Correção Sênior: Desativamos a exportação automática para assets de teste que causa o erro de finalização
 room {
     schemaDirectory("$projectDir/schemas")
 }
@@ -41,43 +40,46 @@ kotlin {
     }
 
     sourceSets {
-        dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.materialIconsExtended) 
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.viewmodel.compose) 
-            implementation(libs.androidx.lifecycle.runtime.compose)
+        // CORREÇÃO SÊNIOR: As dependências DEVEM estar dentro de commonMain.dependencies
+        // para que sejam propagadas corretamente para Android, iOS e Desktop.
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(compose.materialIconsExtended) 
+                implementation(libs.androidx.lifecycle.viewmodel)
+                implementation(libs.androidx.lifecycle.viewmodel.compose) 
+                implementation(libs.androidx.lifecycle.runtime.compose)
 
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.serialization.json)
-            // Forçando dependência para estabilidade no build do iOS
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-            
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.coil.compose)
-            implementation(libs.coil.network.ktor)
-            
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.sqlite.bundled)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.kotlinx.serialization.json)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor)
+                
+                implementation(libs.androidx.room.runtime)
+                implementation(libs.sqlite.bundled)
+            }
         }
 
-        androidMain.dependencies {
-            implementation(libs.androidx.core.ktx)
-            implementation(libs.androidx.appcompat)
-            implementation(libs.material)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.okhttp)
-            implementation(libs.androidx.media3.exoplayer)
-            implementation(libs.androidx.media3.ui)
-            implementation(libs.androidx.media3.hls)
-            implementation(libs.startio.sdk)
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.androidx.core.ktx)
+                implementation(libs.androidx.appcompat)
+                implementation(libs.material)
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.ktor.client.okhttp)
+                implementation(libs.androidx.media3.exoplayer)
+                implementation(libs.androidx.media3.ui)
+                implementation(libs.androidx.media3.hls)
+                implementation(libs.startio.sdk)
+            }
         }
 
         val desktopMain by getting {
@@ -95,8 +97,6 @@ kotlin {
     }
 }
 
-// Correção Sênior para o erro de 'inputDirectory is final'
-// Desabilitamos explicitamente a tarefa que tenta copiar esquemas para assets de teste do Android
 tasks.configureEach {
     if (name.contains("copyRoomSchemasToAndroidTestAssets")) {
         enabled = false
