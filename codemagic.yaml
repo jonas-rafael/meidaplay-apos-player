@@ -14,7 +14,7 @@ workflows:
     triggering:
       events:
         - push
-      branches:
+      branch_patterns:
         - master
     scripts:
       - name: Set up JDK 21
