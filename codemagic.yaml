@@ -1,0 +1,46 @@
+workflows:
+  android-ios-kmp-workflow:
+    name: MediaPlay KMP Build (Android & iOS)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - sdk_versions
+      vars:
+        JAVA_VERSION: "21"
+      node: latest
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branches:
+        - master
+    scripts:
+      - name: Set up JDK 21
+        script: |
+          echo "Setting up JDK 21..."
+          # CodeMagic já possui múltiplas versões, garantindo que a 21 esteja em uso
+          sdk use java 21.0.2-tem || true
+          java -version
+
+      - name: Make gradlew executable
+        script: chmod +x gradlew
+
+      - name: Build Android Debug APK
+        script: |
+          ./gradlew :composeApp:assembleDebug
+
+      - name: Build iOS Framework (Release)
+        script: |
+          # Compila o framework para iOS (necessário para validar Room KMP no iOS)
+          ./gradlew :composeApp:assembleComposeAppReleaseFramework
+
+      - name: Build Desktop (Optional Check)
+        script: |
+          ./gradlew :composeApp:compileKotlinDesktop
+
+    artifacts:
+      - composeApp/build/outputs/apk/debug/*.apk
+      - composeApp/build/fat-framework/release/*.framework
+      - composeApp/build/bin/iosArm64/releaseFramework/*.framework
