@@ -1,6 +1,7 @@
 package com.example.mediaplay.database
 
 import androidx.room.*
+import androidx.room.RoomDatabaseConstructor
 import kotlinx.coroutines.flow.Flow
 
 @Entity(tableName = "favorites")
@@ -80,19 +81,15 @@ interface MediaItemDao {
     """)
     fun getFiltered(playlistId: Int, type: String, category: String, query: String, limit: Int): Flow<List<MediaItemEntity>>
 
-    @Query("SELECT DISTINCT groupTitle FROM media_items WHERE playlistId = :playlistId AND contentType = :type ORDER BY groupTitle ASC")
+    @Query("SELECT DISTINCT groupTitle FROM media_items WHERE playlistId = :playlistId AND contentType = :type AND groupTitle IS NOT NULL ORDER BY groupTitle ASC")
     fun getCategories(playlistId: Int, type: String): Flow<List<String>>
 }
 
 @Database(entities = [FavoriteItem::class, PlaylistItem::class, MediaItemEntity::class], version = 5)
-@ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun favoriteDao(): FavoriteDao
     abstract fun playlistDao(): PlaylistDao
     abstract fun mediaItemDao(): MediaItemDao
 }
-
-// CORREÇÃO: Removemos a interface daqui para evitar erro de inicialização no metadado
-expect object AppDatabaseConstructor
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>

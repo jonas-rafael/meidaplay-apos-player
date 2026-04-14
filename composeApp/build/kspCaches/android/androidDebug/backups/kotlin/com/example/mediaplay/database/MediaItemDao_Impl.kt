@@ -160,9 +160,9 @@ public class MediaItemDao_Impl(
     }
   }
 
-  public override fun getCategories(playlistId: Int, type: String): Flow<List<String?>> {
+  public override fun getCategories(playlistId: Int, type: String): Flow<List<String>> {
     val _sql: String =
-        "SELECT DISTINCT groupTitle FROM media_items WHERE playlistId = ? AND contentType = ? ORDER BY groupTitle ASC"
+        "SELECT DISTINCT groupTitle FROM media_items WHERE playlistId = ? AND contentType = ? AND groupTitle IS NOT NULL ORDER BY groupTitle ASC"
     return createFlow(__db, false, arrayOf("media_items")) { _connection ->
       val _stmt: SQLiteStatement = _connection.prepare(_sql)
       try {
@@ -170,14 +170,10 @@ public class MediaItemDao_Impl(
         _stmt.bindLong(_argIndex, playlistId.toLong())
         _argIndex = 2
         _stmt.bindText(_argIndex, type)
-        val _result: MutableList<String?> = mutableListOf()
+        val _result: MutableList<String> = mutableListOf()
         while (_stmt.step()) {
-          val _item: String?
-          if (_stmt.isNull(0)) {
-            _item = null
-          } else {
-            _item = _stmt.getText(0)
-          }
+          val _item: String
+          _item = _stmt.getText(0)
           _result.add(_item)
         }
         _result

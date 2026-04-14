@@ -15,6 +15,7 @@ actual fun VideoPlayer(
     modifier: Modifier,
     aspectRatio: PlayerAspectRatio,
     isPlaying: Boolean,
+    seekPosition: Long?,
     onProgress: (current: Long, total: Long) -> Unit,
     onFinished: () -> Unit
 ) {

@@ -19,6 +19,11 @@ room {
 kotlin {
     applyDefaultHierarchyTemplate()
 
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -103,14 +108,6 @@ tasks.configureEach {
     }
 }
 
-dependencies {
-    add("kspAndroid", libs.androidx.room.compiler)
-    add("kspDesktop", libs.androidx.room.compiler)
-    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
-    add("kspIosArm64", libs.androidx.room.compiler)
-    add("kspIosX64", libs.androidx.room.compiler)
-}
-
 android {
     namespace = "com.example.mediaplay"
     compileSdk = 34
@@ -148,4 +145,17 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+dependencies {
+    val roomCompiler = libs.androidx.room.compiler
+    add("kspAndroid", roomCompiler)
+    add("kspDesktop", roomCompiler)
+    add("kspIosSimulatorArm64", roomCompiler)
+    add("kspIosArm64", roomCompiler)
+    add("kspIosX64", roomCompiler)
+}
+
+ksp {
+    arg("room.generateKotlin", "true")
 }

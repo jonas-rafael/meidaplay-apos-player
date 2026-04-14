@@ -1,4 +1,0 @@
-#Sun Apr 12 19:23:33 BRT 2026
-base.0=/home/jonas/iptv/meidaplay-apos-player/composeApp/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
-path.0=0/classes.dex
-renamed.0=classes.dex
