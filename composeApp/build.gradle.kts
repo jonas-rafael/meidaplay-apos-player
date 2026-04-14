@@ -55,6 +55,9 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
+            // Forçando dependência para estabilidade no build do iOS
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+            
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)

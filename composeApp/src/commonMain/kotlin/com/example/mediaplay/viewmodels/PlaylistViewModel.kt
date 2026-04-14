@@ -2,18 +2,31 @@ package com.example.mediaplay.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mediaplay.database.*
+import com.example.mediaplay.database.AppDatabase
+import com.example.mediaplay.database.FavoriteItem
+import com.example.mediaplay.database.FavoriteDao
+import com.example.mediaplay.database.PlaylistDao
+import com.example.mediaplay.database.MediaItemDao
+import com.example.mediaplay.database.PlaylistItem
+import com.example.mediaplay.database.MediaItemEntity
+import com.example.mediaplay.database.getDatabaseBuilder
 import com.example.mediaplay.models.MediaItem
 import com.example.mediaplay.utils.M3UStreamParser
 import com.example.mediaplay.ui.showInterstitialAd
 import com.example.mediaplay.utils.getCurrentTimeMillis
-import io.ktor.client.*
-import io.ktor.client.plugins.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.utils.io.*
+import io.ktor.client.HttpClient
+import io.ktor.client.plugins.onDownload
+import io.ktor.client.request.prepareGet
+import io.ktor.client.statement.bodyAsChannel
+import io.ktor.utils.io.readUTF8Line
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -43,10 +56,10 @@ class PlaylistViewModel : ViewModel() {
     val uiState: StateFlow<PlaylistUiState> = _uiState.asStateFlow()
 
     private val httpClient = HttpClient()
-    private val database = getDatabaseBuilder().build()
-    private val favoriteDao = database.favoriteDao()
-    private val playlistDao = database.playlistDao()
-    private val mediaItemDao = database.mediaItemDao()
+    private val database: AppDatabase = getDatabaseBuilder().build()
+    private val favoriteDao: FavoriteDao = database.favoriteDao()
+    private val playlistDao: PlaylistDao = database.playlistDao()
+    private val mediaItemDao: MediaItemDao = database.mediaItemDao()
 
     private var lastAdTimestamp: Long = 0L
     private var channelSwitchCount: Int = 0
