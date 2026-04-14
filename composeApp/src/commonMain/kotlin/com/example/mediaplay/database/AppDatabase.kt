@@ -30,7 +30,7 @@ interface FavoriteDao {
 data class PlaylistItem(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
-    val url: String, // Para Xtream, isso será a URL base construída
+    val url: String,
     val serverUrl: String? = null,
     val username: String? = null,
     val password: String? = null,
@@ -81,14 +81,19 @@ interface MediaItemDao {
     fun getFiltered(playlistId: Int, type: String, category: String, query: String, limit: Int): Flow<List<MediaItemEntity>>
 
     @Query("SELECT DISTINCT groupTitle FROM media_items WHERE playlistId = :playlistId AND contentType = :type ORDER BY groupTitle ASC")
-    fun getCategories(playlistId: Int, type: String): Flow<List<String?>>
+    fun getCategories(playlistId: Int, type: String): Flow<List<String>>
 }
 
+// CORREÇÃO SÊNIOR: Adicionado @ConstructedBy e expect object para compatibilidade com iOS/Native
 @Database(entities = [FavoriteItem::class, PlaylistItem::class, MediaItemEntity::class], version = 5)
+@ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun favoriteDao(): FavoriteDao
     abstract fun playlistDao(): PlaylistDao
     abstract fun mediaItemDao(): MediaItemDao
 }
+
+// Interface necessária para o Room KMP instanciar o banco no iOS/Desktop
+expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase>
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>
