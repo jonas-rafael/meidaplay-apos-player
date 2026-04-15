@@ -16,12 +16,6 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
         .fallbackToDestructiveMigration(true)
 }
 
-actual object AppDatabaseConstructor : androidx.room.RoomDatabaseConstructor<AppDatabase> {
-    override fun initialize(): AppDatabase = Room.databaseBuilder<AppDatabase>(
-        name = "dummy.db"
-    ).build()
-}
-
 private fun documentDirectory(): String {
     val documentDirectory = NSFileManager.defaultManager.URLForDirectory(
         directory = NSDocumentDirectory,
