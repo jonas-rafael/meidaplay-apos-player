@@ -33,14 +33,17 @@ kotlin {
 
     jvm("desktop")
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "ComposeApp"
-            isStatic = true
+    val isMac = System.getProperty("os.name").contains("mac", ignoreCase = true)
+    if (isMac) {
+        listOf(
+            iosX64(),
+            iosArm64(),
+            iosSimulatorArm64()
+        ).forEach { iosTarget ->
+            iosTarget.binaries.framework {
+                baseName = "ComposeApp"
+                isStatic = true
+            }
         }
     }
 
@@ -94,11 +97,13 @@ kotlin {
             }
         }
 
+    if (System.getProperty("os.name").contains("mac", ignoreCase = true)) {
         val iosMain by getting {
             dependencies {
                 implementation(libs.ktor.client.darwin)
             }
         }
+    }
     }
 }
 
@@ -151,9 +156,12 @@ dependencies {
     val roomCompiler = libs.androidx.room.compiler
     add("kspAndroid", roomCompiler)
     add("kspDesktop", roomCompiler)
-    add("kspIosSimulatorArm64", roomCompiler)
-    add("kspIosArm64", roomCompiler)
-    add("kspIosX64", roomCompiler)
+    
+    if (System.getProperty("os.name").contains("mac", ignoreCase = true)) {
+        add("kspIosSimulatorArm64", roomCompiler)
+        add("kspIosArm64", roomCompiler)
+        add("kspIosX64", roomCompiler)
+    }
 }
 
 ksp {

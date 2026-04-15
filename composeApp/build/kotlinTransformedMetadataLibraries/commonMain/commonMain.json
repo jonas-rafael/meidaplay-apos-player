@@ -1,0 +1,302 @@
+[
+  {
+    "moduleId": "module org.jetbrains.kotlin:kotlin-stdlib:2.0.21",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlin-kotlin-stdlib-2.0.21-commonMain-WPEnbA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.runtime:runtime:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.runtime-runtime-1.7.0-commonMain-9pDeVQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.foundation:foundation:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.foundation-foundation-1.7.0-commonMain-Z4pWpg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material3:material3:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material3-material3-1.7.0-commonMain-HpF0Ww.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-1.7.0-commonMain-byxhLA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.components:components-resources:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.components-components-resources-1.7.0-blockingMain-Tn2Qyw.klib",
+    "sourceSetName": "blockingMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.components:components-resources:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.components-components-resources-1.7.0-commonMain-Tn2Qyw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.components:components-ui-tooling-preview:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.components-components-ui-tooling-preview-1.7.0-commonMain--i3iSw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material-icons-extended:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-icons-extended-1.7.0-commonMain-m2wuDA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:2.8.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.lifecycle-lifecycle-viewmodel-2.8.3-commonMain-I44vqw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.lifecycle-lifecycle-viewmodel-compose-2.8.3-commonMain-JkV53A.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.8.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.lifecycle-lifecycle-runtime-compose-2.8.3-commonMain-eB6IaQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-coroutines-core-1.9.0-concurrentMain-ENDfhw.klib",
+    "sourceSetName": "concurrentMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-coroutines-core-1.9.0-commonMain-ENDfhw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-serialization-json-1.7.3-commonMain-O4ZS7Q.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-client-core:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-client-core-2.3.12-commonMain-FU-9lg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-client-content-negotiation:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-client-content-negotiation-2.3.12-commonMain-jI37cw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-serialization-kotlinx-json:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-serialization-kotlinx-json-2.3.12-commonMain-sJ8SDA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-compose:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-compose-3.0.0-alpha06-commonMain-AvZVXw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-network-ktor:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-network-ktor-3.0.0-alpha06-commonMain-owEVuw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.room:room-runtime:2.7.0-alpha11",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.room-room-runtime-2.7.0-alpha11-commonMain-bG9DLQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.sqlite:sqlite-bundled:2.5.0-alpha11",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.sqlite-sqlite-bundled-2.5.0-alpha11-commonMain-9SUhcQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.animation:animation:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.animation-animation-1.7.0-commonMain-TojQLQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material-icons-core:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-icons-core-1.7.0-commonMain-OY6u5w.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.material:material-ripple:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.material-material-ripple-1.7.0-commonMain-hYj_-Q.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-graphics:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-graphics-1.7.0-commonMain-nWZcXg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-text:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-text-1.7.0-commonMain-22Ga_g.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.runtime:runtime-saveable:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.runtime-runtime-saveable-1.7.0-commonMain-dToAUQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-geometry:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-geometry-1.7.0-commonMain-CwQ9Eg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-unit:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-unit-1.7.0-commonMain-pR3KgA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.ui:ui-util:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.ui-ui-util-1.7.0-commonMain-3-t5Ow.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.annotation-internal:annotation:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.annotation-internal-annotation-1.7.0-commonMain-BD0V2w.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.lifecycle:lifecycle-common:2.8.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.lifecycle-lifecycle-common-2.8.3-commonMain-FPlmfg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.lifecycle-lifecycle-viewmodel-savedstate-2.8.3-commonMain-nn5erw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.savedstate:savedstate:1.2.2",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.savedstate-savedstate-1.2.2-commonMain-rDkiiA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.lifecycle:lifecycle-runtime:2.8.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.lifecycle-lifecycle-runtime-2.8.3-commonMain-P_jWsA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.kotlinx-kotlinx-serialization-core-1.7.3-commonMain-s2qClw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-http:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-http-2.3.12-commonMain-W5sIeA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-events:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-events-2.3.12-commonMain-Q6-xkw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-websocket-serialization:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-websocket-serialization-2.3.12-commonMain-8xBQEg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-serialization:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-serialization-2.3.12-commonMain-NxrIfg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-serialization-kotlinx:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-serialization-kotlinx-2.3.12-commonMain-s53Slg.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-3.0.0-alpha06-commonMain-NwDnKQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-compose-core:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-compose-core-3.0.0-alpha06-commonMain-ZZAbTA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-core:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-core-3.0.0-alpha06-nonNativeMain-WBYwmA.klib",
+    "sourceSetName": "nonNativeMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-core:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-core-3.0.0-alpha06-nonJsCommonMain-WBYwmA.klib",
+    "sourceSetName": "nonJsCommonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-core:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-core-3.0.0-alpha06-commonMain-WBYwmA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.coil-kt.coil3:coil-network-core:3.0.0-alpha06",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-network-core-3.0.0-alpha06-commonMain-6ep4SA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.annotation:annotation:1.8.1",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.annotation-annotation-1.8.1-commonMain-VdfbRA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.collection:collection:1.4.2",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.collection-collection-1.4.2-commonMain-GMwabQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.room:room-common:2.7.0-alpha11",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.room-room-common-2.7.0-alpha11-commonMain-ANh7DQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.sqlite:sqlite:2.5.0-alpha11",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.sqlite-sqlite-2.5.0-alpha11-commonMain-vuEFQA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.animation:animation-core:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.animation-animation-core-1.7.0-commonMain-KAIxIA.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.compose.foundation:foundation-layout:1.7.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.compose.foundation-foundation-layout-1.7.0-commonMain-Nkt8ew.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module org.jetbrains.androidx.core:core-bundle:1.0.1",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.core-core-bundle-1.0.1-commonMain-fXRodQ.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module androidx.arch.core:core-common:2.2.0",
+    "file": "/home/jonas/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar",
+    "sourceSetName": null
+  },
+  {
+    "moduleId": "module io.ktor:ktor-utils:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-utils-2.3.12-commonMain-kEcFvw.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-websockets:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-websockets-2.3.12-commonMain-8-9-_g.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module com.squareup.okio:okio:3.8.0",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/com.squareup.okio-okio-3.8.0-commonMain-YgoO1Q.klib",
+    "sourceSetName": "commonMain"
+  },
+  {
+    "moduleId": "module io.ktor:ktor-io:2.3.12",
+    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.ktor-ktor-io-2.3.12-commonMain-3YsjwQ.klib",
+    "sourceSetName": "commonMain"
+  }
+]
