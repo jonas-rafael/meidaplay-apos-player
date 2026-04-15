@@ -6,6 +6,7 @@ import androidx.compose.ui.interop.UIKitView
 import com.example.mediaplay.viewmodels.PlayerAspectRatio
 import platform.AVFoundation.*
 import platform.AVKit.*
+import platform.CoreMedia.*
 import platform.Foundation.NSURL
 import platform.QuartzCore.setContentsGravity
 import platform.UIKit.UIView
@@ -52,11 +53,13 @@ actual fun VideoPlayer(
         while (true) {
             val current = player.currentTime()
             val duration = player.currentItem?.duration
-            if (current != null && duration != null) {
-                // Conversão de CMTime para milisegundos simplificada
-                val curMs = (CMTimeGetSeconds(current) * 1000).toLong()
-                val durMs = (CMTimeGetSeconds(duration) * 1000).toLong()
-                if (durMs > 0) onProgress(curMs, durMs)
+            
+            if (duration != null) {
+                val curSecs = CMTimeGetSeconds(current)
+                val durSecs = CMTimeGetSeconds(duration)
+                if (!curSecs.isNaN() && !durSecs.isNaN() && durSecs > 0) {
+                    onProgress((curSecs * 1000).toLong(), (durSecs * 1000).toLong())
+                }
             }
             kotlinx.coroutines.delay(1000)
         }
