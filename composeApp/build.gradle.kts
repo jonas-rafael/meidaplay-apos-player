@@ -22,6 +22,8 @@ kotlin {
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
+        freeCompilerArgs.add("-opt-in=kotlinx.cinterop.ExperimentalForeignApi")
+        freeCompilerArgs.add("-opt-in=androidx.compose.runtime.InternalComposeApi")
     }
 
     androidTarget {
@@ -33,23 +35,19 @@ kotlin {
 
     jvm("desktop")
 
-    val isMac = System.getProperty("os.name").contains("mac", ignoreCase = true)
-    if (isMac) {
-        listOf(
-            iosX64(),
-            iosArm64(),
-            iosSimulatorArm64()
-        ).forEach { iosTarget ->
-            iosTarget.binaries.framework {
-                baseName = "ComposeApp"
-                isStatic = true
-            }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
         }
     }
 
     sourceSets {
-        // CORREÇÃO SÊNIOR: As dependências DEVEM estar dentro de commonMain.dependencies
-        // para que sejam propagadas corretamente para Android, iOS e Desktop.
+        // ...
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
@@ -97,13 +95,11 @@ kotlin {
             }
         }
 
-    if (System.getProperty("os.name").contains("mac", ignoreCase = true)) {
         val iosMain by getting {
             dependencies {
                 implementation(libs.ktor.client.darwin)
             }
         }
-    }
     }
 }
 
@@ -156,12 +152,9 @@ dependencies {
     val roomCompiler = libs.androidx.room.compiler
     add("kspAndroid", roomCompiler)
     add("kspDesktop", roomCompiler)
-    
-    if (System.getProperty("os.name").contains("mac", ignoreCase = true)) {
-        add("kspIosSimulatorArm64", roomCompiler)
-        add("kspIosArm64", roomCompiler)
-        add("kspIosX64", roomCompiler)
-    }
+    add("kspIosSimulatorArm64", roomCompiler)
+    add("kspIosArm64", roomCompiler)
+    add("kspIosX64", roomCompiler)
 }
 
 ksp {

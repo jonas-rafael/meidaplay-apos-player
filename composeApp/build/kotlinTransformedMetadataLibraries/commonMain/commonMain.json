@@ -221,11 +221,6 @@
   },
   {
     "moduleId": "module io.coil-kt.coil3:coil-core:3.0.0-alpha06",
-    "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-core-3.0.0-alpha06-nonNativeMain-WBYwmA.klib",
-    "sourceSetName": "nonNativeMain"
-  },
-  {
-    "moduleId": "module io.coil-kt.coil3:coil-core:3.0.0-alpha06",
     "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/io.coil-kt.coil3-coil-core-3.0.0-alpha06-nonJsCommonMain-WBYwmA.klib",
     "sourceSetName": "nonJsCommonMain"
   },
@@ -273,11 +268,6 @@
     "moduleId": "module org.jetbrains.androidx.core:core-bundle:1.0.1",
     "file": "/home/jonas/iptv/meidaplay-apos-player/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/org.jetbrains.androidx.core-core-bundle-1.0.1-commonMain-fXRodQ.klib",
     "sourceSetName": "commonMain"
-  },
-  {
-    "moduleId": "module androidx.arch.core:core-common:2.2.0",
-    "file": "/home/jonas/.gradle/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.2.0/5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3/core-common-2.2.0.jar",
-    "sourceSetName": null
   },
   {
     "moduleId": "module io.ktor:ktor-utils:2.3.12",
