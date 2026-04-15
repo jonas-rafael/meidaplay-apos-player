@@ -7,10 +7,9 @@ object M3UStreamParser {
     private val TAG_REGEX = """([a-zA-Z0-9_-]+)="([^"]*)"""".toRegex()
 
     /**
-     * Faz o parsing de um fluxo de linhas M3U de forma eficiente.
+     * Faz o parsing de um fluxo de linhas M3U de forma preguiçosa (Sequence).
      */
-    fun parse(lines: Sequence<String>): List<MediaItem> {
-        val itemList = mutableListOf<MediaItem>()
+    fun parseLazily(lines: Sequence<String>): Sequence<MediaItem> = sequence {
         var currentMetadata: Map<String, String>? = null
         var currentTitle: String? = null
 
@@ -36,7 +35,7 @@ object M3UStreamParser {
                             else -> "LIVE"
                         }
 
-                        itemList.add(
+                        yield(
                             MediaItem(
                                 title = currentTitle!!,
                                 url = trimmedLine,
@@ -53,7 +52,12 @@ object M3UStreamParser {
                 }
             }
         }
+    }
 
-        return itemList
+    /**
+     * Mantido para retrocompatibilidade, mas agora usa o parser lazy internamente.
+     */
+    fun parse(lines: Sequence<String>): List<MediaItem> {
+        return parseLazily(lines).toList()
     }
 }

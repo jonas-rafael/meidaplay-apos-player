@@ -24,6 +24,7 @@ kotlin {
         freeCompilerArgs.add("-Xexpect-actual-classes")
         freeCompilerArgs.add("-opt-in=kotlinx.cinterop.ExperimentalForeignApi")
         freeCompilerArgs.add("-opt-in=androidx.compose.runtime.InternalComposeApi")
+        freeCompilerArgs.add("-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi")
     }
 
     androidTarget {

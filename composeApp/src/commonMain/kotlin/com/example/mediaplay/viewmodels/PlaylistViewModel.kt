@@ -28,7 +28,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 enum class PlayerAspectRatio { FIT, FILL, SIXTEEN_NINE, FOUR_THREE }
@@ -176,29 +175,58 @@ class PlaylistViewModel : ViewModel() {
                         if (response.status.value in 200..299) {
                             mediaItemDao.deleteByPlaylist(playlist.id)
                             val channel = response.bodyAsChannel()
-                            val lines = sequence {
-                                while (!channel.isClosedForRead) {
-                                    val line = runBlocking { channel.readUTF8Line() }
-                                    if (line != null) yield(line) else break
-                                }
-                            }
                             
                             val batch = mutableListOf<MediaItemEntity>()
-                            M3UStreamParser.parse(lines).forEach { item: MediaItem ->
-                                batch.add(MediaItemEntity(
-                                    title = item.title, url = item.url, imageUrl = item.imageUrl,
-                                    groupTitle = item.groupTitle, tvgId = item.tvgId, tvgName = item.tvgName,
-                                    playlistId = playlist.id, contentType = item.contentType
-                                ))
-                                if (batch.size >= 500) {
-                                    val currentBatch = batch.toList()
-                                    runBlocking { mediaItemDao.insertAll(currentBatch) }
-                                    batch.clear()
+                            var currentMetadata: Map<String, String>? = null
+                            var currentTitle: String? = null
+                            val tagRegex = """([a-zA-Z0-9_-]+)="([^"]*)"""".toRegex()
+
+                            while (!channel.isClosedForRead) {
+                                val line = channel.readUTF8Line()?.trim() ?: break
+                                if (line.isEmpty()) continue
+
+                                when {
+                                    line.startsWith("#EXTINF:", ignoreCase = true) -> {
+                                        currentMetadata = tagRegex.findAll(line)
+                                            .associate { it.groupValues[1] to it.groupValues[2] }
+                                        currentTitle = line.substringAfterLast(",").trim()
+                                    }
+                                    line.startsWith("http", ignoreCase = true) -> {
+                                        if (currentTitle != null) {
+                                            val metadata = currentMetadata
+                                            val group = metadata?.get("group-title") ?: "Sem Grupo"
+                                            val groupLower = group.lowercase()
+                                            
+                                            val type = when {
+                                                groupLower.contains("filme") || groupLower.contains("movie") || groupLower.contains("cinema") -> "MOVIE"
+                                                groupLower.contains("serie") || groupLower.contains("episode") || groupLower.contains("temporada") -> "SERIES"
+                                                else -> "LIVE"
+                                            }
+
+                                            batch.add(MediaItemEntity(
+                                                title = currentTitle!!,
+                                                url = line,
+                                                imageUrl = metadata?.get("tvg-logo"),
+                                                groupTitle = group,
+                                                tvgId = metadata?.get("tvg-id"),
+                                                tvgName = metadata?.get("tvg-name"),
+                                                playlistId = playlist.id,
+                                                contentType = type
+                                            ))
+
+                                            if (batch.size >= 500) {
+                                                val currentBatch = batch.toList()
+                                                mediaItemDao.insertAll(currentBatch)
+                                                batch.clear()
+                                            }
+                                        }
+                                        currentMetadata = null
+                                        currentTitle = null
+                                    }
                                 }
                             }
                             if (batch.isNotEmpty()) {
-                                val finalBatch = batch.toList()
-                                runBlocking { mediaItemDao.insertAll(finalBatch) }
+                                mediaItemDao.insertAll(batch)
                             }
                         }
                     }
