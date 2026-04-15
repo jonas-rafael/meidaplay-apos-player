@@ -48,7 +48,6 @@ kotlin {
     }
 sourceSets {
     val commonMain by getting {
-        kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         dependencies {
             implementation(compose.runtime)
 // ... rest of file
