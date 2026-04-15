@@ -13,3 +13,9 @@ actual fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
         .fallbackToDestructiveMigrationOnDowngrade(true)
         .fallbackToDestructiveMigration(true)
 }
+
+actual object AppDatabaseConstructor : androidx.room.RoomDatabaseConstructor<AppDatabase> {
+    override fun initialize(): AppDatabase = Room.databaseBuilder<AppDatabase>(
+        name = "dummy.db"
+    ).build()
+}
