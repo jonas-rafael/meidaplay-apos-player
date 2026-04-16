@@ -8,7 +8,6 @@ import platform.AVFoundation.*
 import platform.AVKit.*
 import platform.CoreMedia.*
 import platform.Foundation.NSURL
-import platform.QuartzCore.setContentsGravity
 import platform.UIKit.UIView
 import platform.UIKit.UIDevice
 import kotlinx.cinterop.CValue
