@@ -159,7 +159,7 @@ dependencies {
 }
 
 tasks.configureEach {
-    if (name == "compileIosMainKotlinMetadata") {
+    if (name.contains("Metadata") && (name.contains("Ios") || name.contains("Common"))) {
         enabled = false
     }
 }
