@@ -1,2 +1,0 @@
-
-<composeApp_commonMain>:com.example.mediaplay:com.example.mediaplay.database:com.example.mediaplay.models:com.example.mediaplay.ui:com.example.mediaplay.ui.player:com.example.mediaplay.utils: com.example.mediaplay.viewmodels:(mediaplay.composeapp.generated.resources
