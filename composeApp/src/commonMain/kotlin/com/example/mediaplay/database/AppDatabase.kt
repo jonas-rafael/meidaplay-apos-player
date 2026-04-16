@@ -1,7 +1,6 @@
 package com.example.mediaplay.database
 
 import androidx.room.*
-import androidx.room.RoomDatabaseConstructor
 import kotlinx.coroutines.flow.Flow
 
 @Entity(tableName = "favorites")
@@ -94,6 +93,6 @@ abstract class AppDatabase : RoomDatabase() {
 }
 
 @Suppress("NO_ACTUAL_FOR_EXPECT")
-expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase>
+expect object AppDatabaseConstructor
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>
