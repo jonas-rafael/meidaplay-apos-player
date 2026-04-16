@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Fundo circular -->
+    <path
+        android:fillColor="#1E1E1E"
+        android:pathData="M54,0a54,54 0 1,0 0,108a54,54 0 1,0 0,-108" />
+
+    <!-- Seta de play -->
+    <path
+        android:fillColor="#00FF99"
+        android:pathData="M40,30 L80,54 L40,78 Z" />
+</vector>

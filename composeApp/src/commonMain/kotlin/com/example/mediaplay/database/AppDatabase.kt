@@ -85,14 +85,14 @@ interface MediaItemDao {
 }
 
 @Database(entities = [FavoriteItem::class, PlaylistItem::class, MediaItemEntity::class], version = 5)
-@ConstructedBy(AppDatabaseConstructor::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun favoriteDao(): FavoriteDao
     abstract fun playlistDao(): PlaylistDao
     abstract fun mediaItemDao(): MediaItemDao
 }
 
-@Suppress("NO_ACTUAL_FOR_EXPECT")
-expect object AppDatabaseConstructor
+expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase> {
+    override fun initialize(): AppDatabase
+}
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>
