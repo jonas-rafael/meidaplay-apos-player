@@ -48,6 +48,7 @@ kotlin {
     }
 sourceSets {
     val commonMain by getting {
+        kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         dependencies {
             implementation(compose.runtime)
 // ... rest of file
@@ -75,8 +76,6 @@ sourceSets {
         }
 
         val androidMain by getting {
-            kotlin.srcDir("build/generated/ksp/android/androidDebug/kotlin")
-            kotlin.srcDir("build/generated/ksp/android/androidRelease/kotlin")
             dependencies {
                 implementation(libs.androidx.core.ktx)
                 implementation(libs.androidx.appcompat)
