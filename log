@@ -1,0 +1,325 @@
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+Checking the license for package Android SDK Build-Tools 34 in /Users/runner/Library/Android/sdk/licenses
+License for package Android SDK Build-Tools 34 accepted.
+Preparing "Install Android SDK Build-Tools 34 v.34.0.0".
+"Install Android SDK Build-Tools 34 v.34.0.0" ready.
+Installing Android SDK Build-Tools 34 in /Users/runner/Library/Android/sdk/build-tools/34.0.0
+"Install Android SDK Build-Tools 34 v.34.0.0" complete.
+"Install Android SDK Build-Tools 34 v.34.0.0" finished.
+> Task :composeApp:cleanDesktopTest UP-TO-DATE
+> Task :composeApp:cleanIosSimulatorArm64Test UP-TO-DATE
+> Task :composeApp:cleanIosX64Test UP-TO-DATE
+> Task :composeApp:cleanAllTests UP-TO-DATE
+> Task :composeApp:clean
+> Task :composeApp:generateProjectStructureMetadata
+> Task :composeApp:metadataCommonMainProcessResources NO-SOURCE
+> Task :composeApp:metadataCommonMainClasses
+> Task :composeApp:allMetadataJar
+> Task :composeApp:preBuild UP-TO-DATE
+> Task :composeApp:preDebugBuild UP-TO-DATE
+> Task :composeApp:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidMain NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonMain NO-SOURCE
+> Task :composeApp:generateActualResourceCollectorsForAndroidMain
+> Task :composeApp:generateComposeResClass
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain
+> Task :composeApp:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidDebug NO-SOURCE
+> Task :composeApp:generateDebugResValues
+> Task :composeApp:checkDebugAarMetadata
+> Task :composeApp:mapDebugSourceSetPaths
+> Task :composeApp:generateDebugResources
+> Task :composeApp:packageDebugResources
+> Task :composeApp:mergeDebugResources
+> Task :composeApp:createDebugCompatibleScreenManifests
+> Task :composeApp:extractDeepLinksDebug
+> Task :composeApp:parseDebugLocalResources
+> Task :composeApp:processDebugMainManifest
+> Task :composeApp:processDebugManifest
+> Task :composeApp:convertXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidRelease NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidRelease NO-SOURCE
+> Task :composeApp:preReleaseBuild UP-TO-DATE
+> Task :composeApp:javaPreCompileDebug
+> Task :composeApp:generateReleaseResValues
+> Task :composeApp:checkReleaseAarMetadata
+> Task :composeApp:mapReleaseSourceSetPaths
+> Task :composeApp:generateReleaseResources
+> Task :composeApp:packageReleaseResources
+> Task :composeApp:processDebugManifestForPackage
+> Task :composeApp:parseReleaseLocalResources
+> Task :composeApp:mergeReleaseResources
+> Task :composeApp:createReleaseCompatibleScreenManifests
+> Task :composeApp:extractDeepLinksRelease
+> Task :composeApp:processReleaseMainManifest
+> Task :composeApp:processReleaseManifest
+> Task :composeApp:javaPreCompileRelease
+> Task :composeApp:processReleaseManifestForPackage
+> Task :composeApp:convertXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForDesktopMain NO-SOURCE
+> Task :composeApp:generateActualResourceCollectorsForDesktopMain
+> Task :composeApp:processDebugResources
+> Task :composeApp:processReleaseResources
+
+> Task :composeApp:kspKotlinDesktop
+w: Opt-in requirement marker kotlinx.cinterop.ExperimentalForeignApi is unresolved. Please make sure it's present in the module dependencies
+
+> Task :composeApp:convertXmlValueResourcesForAppleMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAppleMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAppleMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAppleMain NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForIosArm64Main NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosArm64Main NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosArm64Main NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosArm64Main NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForIosMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosMain NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForNativeMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForNativeMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForNativeMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForNativeMain NO-SOURCE
+> Task :composeApp:generateActualResourceCollectorsForIosArm64Main
+
+> Task :composeApp:kspDebugKotlinAndroid
+w: Opt-in requirement marker kotlinx.cinterop.ExperimentalForeignApi is unresolved. Please make sure it's present in the module dependencies
+
+> Task :composeApp:kspReleaseKotlinAndroid
+w: Opt-in requirement marker kotlinx.cinterop.ExperimentalForeignApi is unresolved. Please make sure it's present in the module dependencies
+
+> Task :composeApp:kspKotlinIosArm64
+Downloading native dependencies (LLVM, sysroot etc). This is a one-time action performed only on the first run of the compiler.
+Done.
+Extracting dependency: /Users/runner/.konan/dependencies/cache/llvm-11.1.0-aarch64-macos-essentials-60.tar.gz into /Users/runner/.konan/dependencies
+Done.
+Extracting dependency: /Users/runner/.konan/dependencies/cache/libffi-3.3-1-macos-arm64.tar.gz into /Users/runner/.konan/dependencies
+i: [ksp] loaded provider(s): [androidx.room.RoomKspProcessor$Provider]
+
+> Task :composeApp:convertXmlValueResourcesForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:generateActualResourceCollectorsForIosSimulatorArm64Main
+i: [ksp] loaded provider(s): [androidx.room.RoomKspProcessor$Provider]
+
+> Task :composeApp:kspKotlinIosSimulatorArm64
+
+> Task :composeApp:convertXmlValueResourcesForIosX64Main NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosX64Main NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosX64Main NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosX64Main NO-SOURCE
+> Task :composeApp:generateActualResourceCollectorsForIosX64Main
+
+> Task :composeApp:compileDebugKotlinAndroid
+w: Opt-in requirement marker kotlinx.cinterop.ExperimentalForeignApi is unresolved. Please make sure it's present in the module dependencies
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/androidMain/kotlin/com/example/mediaplay/MainActivity.kt:25:21 'static fun init(p0: Context, p1: String, p2: Boolean): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/androidMain/kotlin/com/example/mediaplay/ui/AdBanner.kt:30:20 'static fun showAd(p0: Context!): Boolean' is deprecated. Deprecated in Java.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:159:56 'val Icons.Filled.PlaylistAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistAdd.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:257:36 'val Icons.Filled.PlaylistPlay: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistPlay.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:456:71 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:611:17 'fun LinearProgressIndicator(progress: Float, modifier: Modifier = ..., color: Color = ..., trackColor: Color = ..., strokeCap: StrokeCap = ...): Unit' is deprecated. Use the overload that takes `progress` as a lambda.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/viewmodels/PlaylistViewModel.kt:170:33 Condition is always 'true'.
+
+> Task :composeApp:compileReleaseKotlinAndroid
+w: Opt-in requirement marker kotlinx.cinterop.ExperimentalForeignApi is unresolved. Please make sure it's present in the module dependencies
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/androidMain/kotlin/com/example/mediaplay/MainActivity.kt:25:21 'static fun init(p0: Context, p1: String, p2: Boolean): Unit' is deprecated. Deprecated in Java.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/androidMain/kotlin/com/example/mediaplay/ui/AdBanner.kt:30:20 'static fun showAd(p0: Context!): Boolean' is deprecated. Deprecated in Java.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:159:56 'val Icons.Filled.PlaylistAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistAdd.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:257:36 'val Icons.Filled.PlaylistPlay: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistPlay.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:456:71 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:611:17 'fun LinearProgressIndicator(progress: Float, modifier: Modifier = ..., color: Color = ..., trackColor: Color = ..., strokeCap: StrokeCap = ...): Unit' is deprecated. Use the overload that takes `progress` as a lambda.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/viewmodels/PlaylistViewModel.kt:170:33 Condition is always 'true'.
+i: [ksp] loaded provider(s): [androidx.room.RoomKspProcessor$Provider]
+
+> Task :composeApp:kspKotlinIosX64
+
+> Task :composeApp:compileDebugJavaWithJavac NO-SOURCE
+> Task :composeApp:compileReleaseJavaWithJavac NO-SOURCE
+> Task :composeApp:copyRoomSchemas NO-SOURCE
+> Task :composeApp:mergeDebugShaders
+> Task :composeApp:compileDebugShaders NO-SOURCE
+> Task :composeApp:copyDebugComposeResourcesToAndroidAssets
+> Task :composeApp:debugAssetsCopyForAGP NO-SOURCE
+> Task :composeApp:generateDebugAssets UP-TO-DATE
+> Task :composeApp:mergeDebugAssets
+> Task :composeApp:compressDebugAssets
+> Task :composeApp:desugarDebugFileDependencies
+> Task :composeApp:dexBuilderDebug
+> Task :composeApp:mergeDebugGlobalSynthetics
+> Task :composeApp:processDebugJavaRes
+> Task :composeApp:mergeDebugStartupProfile
+> Task :composeApp:checkDebugDuplicateClasses
+> Task :composeApp:mergeDebugJniLibFolders
+> Task :composeApp:mergeLibDexDebug
+> Task :composeApp:mergeProjectDexDebug
+> Task :composeApp:mergeDebugJavaResource
+> Task :composeApp:mergeDebugNativeLibs
+> Task :composeApp:validateSigningDebug
+> Task :composeApp:writeDebugAppMetadata
+> Task :composeApp:writeDebugSigningConfigVersions
+> Task :composeApp:copyReleaseComposeResourcesToAndroidAssets
+
+> Task :composeApp:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libsqliteJni.so.
+
+> Task :composeApp:convertXmlValueResourcesForAppleTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAppleTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAppleTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAppleTest NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForCommonTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonTest NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForIosArm64Test NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosArm64Test NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosArm64Test NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosArm64Test NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForIosTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosTest NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForIosX64Test NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosX64Test NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosX64Test NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosX64Test NO-SOURCE
+> Task :composeApp:convertXmlValueResourcesForNativeTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForNativeTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForNativeTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForNativeTest NO-SOURCE
+> Task :composeApp:buildKotlinToolingMetadata
+> Task :composeApp:extractProguardFiles
+> Task :composeApp:generateReleaseLintVitalReportModel
+> Task :composeApp:mergeExtDexDebug
+> Task :composeApp:mergeReleaseJniLibFolders
+> Task :composeApp:mergeReleaseNativeLibs
+
+> Task :composeApp:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libsqliteJni.so.
+
+> Task :composeApp:extractReleaseNativeSymbolTables
+> Task :composeApp:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :composeApp:checkReleaseDuplicateClasses
+> Task :composeApp:dexBuilderRelease
+> Task :composeApp:desugarReleaseFileDependencies
+> Task :composeApp:mergeReleaseStartupProfile
+> Task :composeApp:lintVitalAnalyzeRelease
+> Task :composeApp:packageDebug
+> Task :composeApp:mergeExtDexRelease
+> Task :composeApp:createDebugApkListingFileRedirect
+> Task :composeApp:assembleDebug
+> Task :composeApp:lintVitalReportRelease
+> Task :composeApp:lintVitalRelease
+> Task :composeApp:mergeReleaseArtProfile
+> Task :composeApp:mergeReleaseGlobalSynthetics
+> Task :composeApp:mergeReleaseShaders
+> Task :composeApp:compileReleaseShaders NO-SOURCE
+> Task :composeApp:generateReleaseAssets UP-TO-DATE
+> Task :composeApp:releaseAssetsCopyForAGP NO-SOURCE
+> Task :composeApp:mergeReleaseAssets
+> Task :composeApp:compressReleaseAssets
+> Task :composeApp:extractReleaseVersionControlInfo
+> Task :composeApp:processReleaseJavaRes
+> Task :composeApp:mergeReleaseJavaResource
+> Task :composeApp:collectReleaseDependencies
+> Task :composeApp:optimizeReleaseResources
+> Task :composeApp:sdkReleaseDependencyData
+> Task :composeApp:writeReleaseAppMetadata
+> Task :composeApp:writeReleaseSigningConfigVersions
+> Task :commonizeNativeDistribution
+> Task :composeApp:transformCommonMainDependenciesMetadata
+> Task :composeApp:mergeDexRelease
+> Task :composeApp:transformNativeMainDependenciesMetadata
+> Task :composeApp:compileNativeMainKotlinMetadata NO-SOURCE
+> Task :composeApp:metadataNativeMainProcessResources NO-SOURCE
+> Task :composeApp:metadataNativeMainClasses UP-TO-DATE
+> Task :composeApp:transformAppleMainDependenciesMetadata
+> Task :composeApp:compileAppleMainKotlinMetadata NO-SOURCE
+> Task :composeApp:compileReleaseArtProfile
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:159:56 'val Icons.Filled.PlaylistAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistAdd.
+
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:257:36 'val Icons.Filled.PlaylistPlay: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistPlay.
+> Task :composeApp:compileKotlinIosArm64
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:456:71 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:611:17 'fun LinearProgressIndicator(progress: Float, modifier: Modifier = ..., color: Color = ..., trackColor: Color = ..., strokeCap: StrokeCap = ...): Unit' is deprecated. Use the overload that takes `progress` as a lambda.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/viewmodels/PlaylistViewModel.kt:170:33 Condition is always 'true'.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/iosMain/kotlin/com/example/mediaplay/ui/player/VideoPlayer.kt:67:5 'fun <T : UIView> UIKitView(factory: () -> T, modifier: Modifier, update: (T) -> Unit = ..., background: Color = ..., onRelease: (T) -> Unit = ..., onResize: (@ParameterName(...) T, @ParameterName(...) CValue<CGRect>) -> Unit = ..., interactive: Boolean = ..., accessibilityEnabled: Boolean = ...): Unit' is deprecated. This function was deprecated in favor of newer API.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:159:56 'val Icons.Filled.PlaylistAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistAdd.
+
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:257:36 'val Icons.Filled.PlaylistPlay: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistPlay.
+> Task :composeApp:compileKotlinIosSimulatorArm64
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:456:71 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:611:17 'fun LinearProgressIndicator(progress: Float, modifier: Modifier = ..., color: Color = ..., trackColor: Color = ..., strokeCap: StrokeCap = ...): Unit' is deprecated. Use the overload that takes `progress` as a lambda.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/viewmodels/PlaylistViewModel.kt:170:33 Condition is always 'true'.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/iosMain/kotlin/com/example/mediaplay/ui/player/VideoPlayer.kt:67:5 'fun <T : UIView> UIKitView(factory: () -> T, modifier: Modifier, update: (T) -> Unit = ..., background: Color = ..., onRelease: (T) -> Unit = ..., onResize: (@ParameterName(...) T, @ParameterName(...) CValue<CGRect>) -> Unit = ..., interactive: Boolean = ..., accessibilityEnabled: Boolean = ...): Unit' is deprecated. This function was deprecated in favor of newer API.
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:159:56 'val Icons.Filled.PlaylistAdd: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistAdd.
+
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:257:36 'val Icons.Filled.PlaylistPlay: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.PlaylistPlay.
+> Task :composeApp:compileKotlinIosX64
+w: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/composeApp/src/commonMain/kotlin/com/example/mediaplay/App.kt:456:71 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+	at org.jetbrains.kotlin.backend.konan.optimizations.CallGraphBuilder.staticCall(CallGraphBuilder.kt:146)
+	at org.jetbrains.kotlin.backend.konan.optimizations.CallGraphBuilder.handleFunction(CallGraphBuilder.kt:206)
+	at org.jetbrains.kotlin.backend.konan.optimizations.CallGraphBuilder.build(CallGraphBuilder.kt:96)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.LTOKt.RemoveRedundantCallsToStaticInitializersPhase$lambda$13(LTO.kt:190)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.LTOKt$$Lambda/0x000000a004538890.invoke(Unknown Source)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$3.phaseBody(PhaseBuilders.kt:91)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$3.phaseBody(PhaseBuilders.kt:79)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.konan.driver.PhaseEngine.runPhase(Machinery.kt:120)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.TopLevelPhasesKt.runCodegen(TopLevelPhases.kt:393)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.TopLevelPhasesKt.runBackendCodegen(TopLevelPhases.kt:352)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.TopLevelPhasesKt.compileModule(TopLevelPhases.kt:272)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.TopLevelPhasesKt.runBackend$lambda$12$runAfterLowerings(TopLevelPhases.kt:119)
+	at org.jetbrains.kotlin.backend.konan.driver.phases.TopLevelPhasesKt.runBackend(TopLevelPhases.kt:139)
+	at org.jetbrains.kotlin.backend.konan.driver.DynamicCompilerDriver.produceObjCFramework(DynamicCompilerDriver.kt:83)
+	at org.jetbrains.kotlin.backend.konan.driver.DynamicCompilerDriver.run$lambda$2$lambda$1$lambda$0(DynamicCompilerDriver.kt:43)
+	at org.jetbrains.kotlin.backend.konan.driver.DynamicCompilerDriver$$Lambda/0x000000a0030908d8.invoke(Unknown Source)
+	at org.jetbrains.kotlin.backend.konan.driver.PhaseEngine$Companion$startTopLevel$topLevelPhase$1.phaseBody(Machinery.kt:79)
+	at org.jetbrains.kotlin.backend.konan.driver.PhaseEngine$Companion$startTopLevel$topLevelPhase$1.phaseBody(Machinery.kt:73)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.konan.driver.PhaseEngine$Companion.startTopLevel(Machinery.kt:86)
+	at org.jetbrains.kotlin.backend.konan.driver.DynamicCompilerDriver.run(DynamicCompilerDriver.kt:37)
+	at org.jetbrains.kotlin.backend.konan.KonanDriver.run(KonanDriver.kt:135)
+	at org.jetbrains.kotlin.cli.bc.K2Native.runKonanDriver(K2Native.kt:157)
+
+[Incubating] Problems report is available at: file:///Users/runner/work/meidaplay-apos-player/meidaplay-apos-player/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':composeApp:linkReleaseFrameworkIosArm64'.
+> Compilation finished with errors
+
+
+* Try:
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+
+> Run with --scan to get full insights.
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+> Get more help at https://help.gradle.org.
+
+
+For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+BUILD FAILED in 34m 45s
+139 actionable tasks: 136 executed, 3 up-to-dat

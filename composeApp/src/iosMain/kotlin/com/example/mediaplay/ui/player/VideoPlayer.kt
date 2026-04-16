@@ -73,8 +73,10 @@ actual fun VideoPlayer(
             container
         },
         modifier = modifier,
+        onResize = { view, rect ->
+            playerViewController.view.setFrame(rect)
+        },
         update = { view ->
-            playerViewController.view.setFrame(view.bounds)
             playerLayer.videoGravity = when (aspectRatio) {
                 PlayerAspectRatio.FIT -> AVLayerVideoGravityResizeAspect
                 PlayerAspectRatio.FILL -> AVLayerVideoGravityResizeAspectFill
