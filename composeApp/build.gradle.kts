@@ -158,6 +158,12 @@ dependencies {
     add("kspIosX64", roomCompiler)
 }
 
+tasks.configureEach {
+    if (name == "compileIosMainKotlinMetadata") {
+        enabled = false
+    }
+}
+
 ksp {
     arg("room.generateKotlin", "true")
 }
