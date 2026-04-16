@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="DarkGrey">#353232</color>
+    <color name="black">#FF000000</color>
+    <color name="purple_500">#C500E7</color>
+    <color name="purple_700">#670080</color>
+    <color name="red">#FF4081</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">mediaplay</string>
+    <string name="navigation_drawer_close">Fechar menu</string>
+    <string name="navigation_drawer_open">Abrir menu</string>
+    <string name="thumbnail">Thumbnail da Imagem</string>
+    <style name="Base.Theme.Mediaplay" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Mediaplay" parent="Base.Theme.Mediaplay"/>
+</resources>

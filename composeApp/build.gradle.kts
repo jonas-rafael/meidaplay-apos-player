@@ -46,12 +46,11 @@ kotlin {
             isStatic = true
         }
     }
-sourceSets {
-    val commonMain by getting {
-        kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
-        dependencies {
-            implementation(compose.runtime)
-// ... rest of file
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.ui)
@@ -61,7 +60,6 @@ sourceSets {
                 implementation(libs.androidx.lifecycle.viewmodel)
                 implementation(libs.androidx.lifecycle.viewmodel.compose) 
                 implementation(libs.androidx.lifecycle.runtime.compose)
-
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.ktor.client.core)
@@ -69,7 +67,6 @@ sourceSets {
                 implementation(libs.ktor.serialization.kotlinx.json)
                 implementation(libs.coil.compose)
                 implementation(libs.coil.network.ktor)
-                
                 implementation(libs.androidx.room.runtime)
                 implementation(libs.sqlite.bundled)
             }
@@ -156,12 +153,6 @@ dependencies {
     add("kspIosSimulatorArm64", roomCompiler)
     add("kspIosArm64", roomCompiler)
     add("kspIosX64", roomCompiler)
-}
-
-tasks.configureEach {
-    if (name.contains("Metadata") && (name.contains("Ios") || name.contains("Common"))) {
-        enabled = false
-    }
 }
 
 ksp {

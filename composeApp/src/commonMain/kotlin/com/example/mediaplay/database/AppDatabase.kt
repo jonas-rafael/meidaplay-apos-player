@@ -93,8 +93,6 @@ abstract class AppDatabase : RoomDatabase() {
 }
 
 @Suppress("NO_ACTUAL_FOR_EXPECT")
-expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase> {
-    override fun initialize(): AppDatabase
-}
+expect object AppDatabaseConstructor : RoomDatabaseConstructor<AppDatabase>
 
 expect fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase>
